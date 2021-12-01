@@ -10,6 +10,6 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-app.listen(443, () => {
+app.listen(80, () => {
     console.log("Running on port 80");
 });
