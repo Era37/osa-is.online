@@ -10,6 +10,6 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-app.listen(80, () => {
+app.listen(6000, "localhost", () => {
     console.log("Running on port 80");
 });
