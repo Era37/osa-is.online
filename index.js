@@ -17,7 +17,6 @@ const redisConnect = async () => {
 
 app.get("/", async (req, res) => {
     let resp = await redis.get("myAvatar")
-    console.log(resp);
     res.render("index", {avatar: resp});
 });
 
