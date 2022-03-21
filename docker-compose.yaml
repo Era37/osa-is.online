@@ -3,4 +3,5 @@ services:
     container_name: "portfolio"
     image: portfolio
     build: "./"
-    ports: 6000:80
+    ports:
+      - "6000:80"
