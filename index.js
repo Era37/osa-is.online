@@ -20,7 +20,7 @@ app.get("/", async (req, res) => {
     res.render("index", {avatar: resp});
 });
 
-app.listen(6000, "0.0.0.0", () => {
+app.listen(80, "0.0.0.0", () => {
     console.log("Running on port 80");
 });
 redisConnect();
