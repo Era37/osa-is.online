@@ -5,3 +5,5 @@ services:
     build: "./"
     ports:
       - "6000:80"
+    env_file:
+      - /env_files/portfolio/.env
