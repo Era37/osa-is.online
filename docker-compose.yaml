@@ -1,9 +1,0 @@
-services:
-  site:
-    container_name: "portfolio"
-    image: portfolio
-    build: "./"
-    ports:
-      - "6000:80"
-    env_file:
-      - /env_vars/portfolio/.env
