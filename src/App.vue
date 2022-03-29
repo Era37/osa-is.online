@@ -1,5 +1,5 @@
 <template>
-  	<div class="bg-black flex flex-col h-screen">
+  	<div class="bg-black flex flex-col h-screen text-white">
 		<Header/>
 		<router-view class="grow" />
   	</div>

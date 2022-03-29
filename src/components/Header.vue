@@ -20,24 +20,24 @@
         >
           <div class="px-1 py-1">
             <MenuItem v-slot="{ active }">
-              <button
+              <router-link to="/"><button
                 :class="[
                   active ? 'font-medium bg-black text-white' : 'text-gray-900',
                   'group flex font-medium rounded-md items-center w-full px-2 py-2 text-sm',
                 ]"
               >
-                <router-link to="/">Home</router-link>
-              </button>
+                Home
+              </button></router-link>
             </MenuItem>
             <MenuItem v-slot="{ active }">
-              <button
+              <router-link to="/about"><button
                 :class="[
                   active ? 'bg-black font-medium text-white' : 'text-gray-900',
                   'group flex rounded-md font-medium items-center w-full px-2 py-2 text-sm',
                 ]"
               >
-                <router-link to="/about">About</router-link>
-              </button>
+                About
+              </button></router-link>
             </MenuItem>
           </div>
         </MenuItems>
