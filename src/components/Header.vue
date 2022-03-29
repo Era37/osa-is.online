@@ -16,13 +16,13 @@
         leave-to-class="transform scale-95 opacity-0"
       >
         <MenuItems
-          class="absolute right-0 w-24 mt-1 origin-top-right bg-white divide-y divide-gray-100 rounded-md ring-1 ring-black"
+          class="absolute right-1 w-24 mt-1 origin-top bg-white divide-y divide-gray-100 rounded-md ring-1 ring-black"
         >
           <div class="px-1 py-1">
             <MenuItem v-slot="{ active }">
               <router-link to="/"><button
                 :class="[
-                  active ? 'font-medium bg-black text-white' : 'text-gray-900',
+                  active ? 'font-medium bg-pink-400 text-white' : 'text-gray-900',
                   'group flex font-medium rounded-md items-center w-full px-2 py-2 text-sm',
                 ]"
               >
@@ -32,12 +32,21 @@
             <MenuItem v-slot="{ active }">
               <router-link to="/about"><button
                 :class="[
-                  active ? 'bg-black font-medium text-white' : 'text-gray-900',
+                  active ? 'bg-green-400 font-medium text-white' : 'text-gray-900',
                   'group flex rounded-md font-medium items-center w-full px-2 py-2 text-sm',
                 ]"
               >
                 About
               </button></router-link>
+            </MenuItem>
+            <MenuItem v-slot="{ active }">
+              	<router-link to="/projects">
+					<button :class="[
+						active ? 'bg-sky-400 font-medium' : 'text-gray-900', 
+						'group flex rounded-md font-medium items-center w-full px-2 py-2 text-sm']">
+						Projects
+					</button>
+              	</router-link>
             </MenuItem>
           </div>
         </MenuItems>
