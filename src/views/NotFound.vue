@@ -1,5 +1,5 @@
 <template>
-	<div class="space-y-6 h-screen bg-black p-16">
+	<div class="space-y-6 bg-black p-16">
 		<div class="text-4xl md:text-6xl font-bold">
 			Uh oh, seems like you're lost
 		</div>
