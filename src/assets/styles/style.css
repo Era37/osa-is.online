@@ -723,6 +723,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   fill: #1ed760;
 }
 
+.hover\:fill-gray-200:hover {
+  fill: #e5e7eb;
+}
+
+.hover\:fill-gray-300:hover {
+  fill: #d1d5db;
+}
+
+.hover\:fill-gray-400:hover {
+  fill: #9ca3af;
+}
+
+.hover\:fill-salmon:hover {
+  fill: #ff7391;
+}
+
 @media (min-width: 640px) {
   .sm\:w-96 {
     width: 24rem;
