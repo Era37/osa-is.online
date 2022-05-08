@@ -2,16 +2,17 @@
   <!-- Main div -->
   <div class="bg-grey md:flex text-white h-screen p-6">
     <div class="mx-auto md:my-32 my-12">
-      <img 
-        src="https://av.dbl.tf/768615938055471116"
-        alt="Jessica's Avatar"
-        class="h-44 rounded-xl"
-      >
+      <div class="pb-3">
+        <img 
+          src="https://av.dbl.tf/768615938055471116"
+          alt="Jessica's Avatar"
+          class="h-44 rounded-xl"
+        >
+      </div>
       <div class="text-5xl font-extrabold">
         Hey, I'm <span class="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600">Jessica</span>.
       </div>
-      <div class="pt-3 text-xl font-semibold text-salmon">
-        Fullstack Developer
+      <div class="pt-3 text-xl font-semibold text-salmon" id="job">
       </div>
       <div class="pt-4 max-w-sm text-lg font-medium">
         {{ aboutMe }}
@@ -51,11 +52,12 @@
 
 <script>
 import Project from "./components/Project.vue";
+import Typewriter from 'typewriter-effect/dist/core';
 
 export default {
   data() {
     return {
-      aboutMe: "Hey! My name is Jessica, I'm a trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I play Rainbow Six Seige in my free time and love to paint my nails!",
+      aboutMe: "Hey! My name is Jessica, I'm a trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I play Rainbow Six Seige in my free time and love to paint my nails! My prefered pronouns are she/her.",
       projects: [
         {
           name: "Xiana",
@@ -69,6 +71,24 @@ export default {
   },
   components: {
     Project,
-  }
+  },
+  mounted() {
+    const prefix = "I'm a ";
+    const jobs = ["Fullstack Developer", "Trans Women", "System Architect", "Lesbian"];
+    const typewriter = new Typewriter(document.getElementById("job"), {
+      loop: true,
+      deleteSpeed: 30,
+      delay: 50,
+    });
+    typewriter.typeString(prefix)
+    for (let job of jobs) {
+      if (jobs.indexOf(job) !== 0) {
+        typewriter.deleteChars(jobs[jobs.indexOf(job) - 1].length);
+      };
+      typewriter.typeString(job);
+      typewriter.pauseFor(1500);
+    };
+    typewriter.start();
+  },
 }
 </script>
