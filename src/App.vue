@@ -74,7 +74,7 @@ export default {
   },
   mounted() {
     const prefix = "I'm a ";
-    const jobs = ["Fullstack Developer", "Trans Women", "System Architect", "Lesbian"];
+    const jobs = ["Fullstack Developer", "Trans Women", "System Architect", "Pansexual"];
     const typewriter = new Typewriter(document.getElementById("job"), {
       loop: true,
       deleteSpeed: 30,
