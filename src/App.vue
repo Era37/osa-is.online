@@ -4,7 +4,7 @@
     <div class="mx-auto md:my-32 my-12">
       <div class="pb-3">
         <img 
-          src="https://av.dbl.tf/768615938055471116"
+          src="https://avatar.jessica-is.gay/496432681614180382"
           alt="Jessica's Avatar"
           class="h-44 rounded-xl"
         >
