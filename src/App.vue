@@ -1,7 +1,7 @@
 <template>
   <!-- Main div -->
   <div class="bg-grey md:flex text-white h-screen p-6">
-    <div class="mx-auto md:my-32 my-12">
+    <div class="mx-auto my-auto">
       <div class="pb-3">
         <img 
           src="https://avatar.jessica-is.gay/496432681614180382"
