@@ -57,7 +57,7 @@ import Typewriter from 'typewriter-effect/dist/core';
 export default {
   data() {
     return {
-      aboutMe: "Hey! My name is Jessica, I'm a trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I play Rainbow Six Seige in my free time and love to paint my nails! My prefered pronouns are she/her.",
+      aboutMe: "Hey! My name is Jessica, I'm a trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I play Minecraft in my free time and love to paint my nails! My prefered pronouns are she/her.",
       projects: [
         {
           name: "Xiana",
