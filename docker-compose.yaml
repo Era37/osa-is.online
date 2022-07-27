@@ -1,0 +1,6 @@
+services:
+  website:
+    container_name: portfolio
+    build: ./nuxt-app
+    ports:
+      - 6000:3000
