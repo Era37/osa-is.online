@@ -1,7 +1,0 @@
-services:
-  website:
-    ports:
-      - 6000:80
-    container_name: portfolio
-    build: "./"
-    image: "portfolio"
