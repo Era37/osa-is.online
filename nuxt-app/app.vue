@@ -207,6 +207,7 @@ export default {
     return {
       title: "Jessica",
       link: [{ rel: "icon", href: "/favicon.ico" }],
+      bodyAttrs: [{ style: "background-color: #18181b;" }],
       meta: [
         {
           property: "og:image",
