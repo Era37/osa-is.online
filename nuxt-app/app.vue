@@ -177,6 +177,14 @@ export default {
             "Xiana is a multipurpose bot to manage your discord community. I've spent many months and hundreds of hours on Xiana making Xiana an amazing tool for server admins aswell as a fun discord bot that can be used by everyone.",
           url: "https://xiana.cc",
         },
+        {
+          name: "FIFTY FOUR",
+          img: "/assets/fifty-four.png",
+          text_gradient: "text-[#9e005d]",
+          description:
+            "FIFTY FOUR is an anarchy minecraft server I've been working on, the server runs on the latest version of minecraft offering the latest Mojang has to offer. It runs on top of the line hardware aswell in order to deliver a lag free experience.",
+          url: "https://fifty-four.org",
+        },
       ],
     };
   },
