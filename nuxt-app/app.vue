@@ -192,7 +192,7 @@ export default {
     const prefix = "I'm a ";
     const jobs = [
       "Fullstack Developer",
-      "Trans Women",
+      "Trans Woman",
       "System Architect",
       "Pansexual",
     ];
