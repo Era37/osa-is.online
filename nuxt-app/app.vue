@@ -186,7 +186,7 @@ export default {
       "Fullstack Developer",
       "Trans Woman",
       "System Architect",
-      "Pansexual",
+      "Lesbian",
     ];
     const typewriter = new Typewriter(document.getElementById("job"), {
       loop: true,
