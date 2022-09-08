@@ -11,12 +11,7 @@
       <div class="text-5xl font-extrabold">
         Hey, I'm
         <span
-          class="
-            text-transparent
-            bg-clip-text bg-gradient-to-br
-            from-pink-400
-            to-red-600
-          "
+          class="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600"
           >Jessica</span
         >.
       </div>
@@ -33,13 +28,7 @@
           <a target="_blank" href="https://twitter.com/Era3037"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
-              class="
-                hover:fill-salmon
-                ease-out
-                duration-300
-                fill-white
-                hover:-translate-y-1
-              "
+              class="hover:fill-salmon ease-out duration-300 fill-white hover:-translate-y-1"
               width="26"
               height="31"
               viewBox="0 0 24 24"
@@ -56,13 +45,7 @@
             href="https://discordhub.com/profile/768615938055471116"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
-              class="
-                hover:fill-salmon
-                ease-out
-                duration-300
-                fill-white
-                hover:-translate-y-1
-              "
+              class="hover:fill-salmon ease-out duration-300 fill-white hover:-translate-y-1"
               height="30"
               width="30"
               viewBox="0 0 127.14 96.36"
@@ -88,13 +71,7 @@
           <a target="_blank" href="https://github.com/Era37"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
-              class="
-                hover:fill-salmon
-                ease-out
-                duration-300
-                fill-white
-                hover:-translate-y-1
-              "
+              class="hover:fill-salmon ease-out duration-300 fill-white hover:-translate-y-1"
               width="30"
               height="30"
               viewBox="0 0 24 24"
@@ -110,13 +87,7 @@
             target="_blank"
             href="https://open.spotify.com/user/vvknrxqpb2g7ql3dx3l6m09ro"
             ><svg
-              class="
-                hover:fill-salmon
-                ease-out
-                duration-300
-                hover:-translate-y-1
-                fill-white
-              "
+              class="hover:fill-salmon ease-out duration-300 hover:-translate-y-1 fill-white"
               width="30"
               height="30"
               viewBox="0 0 24 24"
@@ -136,12 +107,7 @@
       <div class="text-5xl font-extrabold mx-auto">
         My
         <span
-          class="
-            text-transparent
-            bg-clip-text bg-gradient-to-br
-            from-lime-400
-            to-green-500
-          "
+          class="text-transparent bg-clip-text bg-gradient-to-br from-lime-400 to-green-500"
           >Blogs</span
         >.
       </div>
@@ -185,6 +151,7 @@ export default {
   },
   async created() {
     const blogs = await this.getBlogs();
+    console.log(blogs);
     blogs.forEach((blog) => {
       this.blogs.push(blog);
     });
@@ -216,5 +183,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

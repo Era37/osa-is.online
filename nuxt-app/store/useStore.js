@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export default defineStore('main', {
 	state() {
 		return {
-			url: "http://192.168.2.21:8081/",
+			url: "http://192.168.2.41:8081/",
 		}
 	},
 	getters: {
