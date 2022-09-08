@@ -1,6 +1,6 @@
 <template>
   <div class="bg-grey md:flex text-white h-screen p-6">
-    <div class="mx-auto my-auto">
+    <div class="m-auto h-screen">
       <div class="pb-3">
         <img
           src="https://avatar.jessica-is.gay/496432681614180382"
@@ -103,7 +103,7 @@
         </li>
       </ul>
     </div>
-    <div class="mr-auto my-32 flex-col flex pb-10">
+    <div class="mr-auto h-screen flex-col flex pb-10">
       <div class="text-5xl font-extrabold mx-auto">
         My
         <span
@@ -111,7 +111,7 @@
           >Blogs</span
         >.
       </div>
-      <div class="pt-6 space-y-3" id="test">
+      <div class="pt-6 space-y-3" v-if="blogs.length">
         <Blog
           v-for="(blog, i) in blogs"
           :key="i"
@@ -122,6 +122,11 @@
           :url="blog.endpoint"
           :est_time="blog.readTime"
         />
+      </div>
+      <div v-else class="flex py-8">
+        <p class="text-gray-400 text-center font-medium m-auto">
+          There are no blogs to see there :(
+        </p>
       </div>
     </div>
   </div>
@@ -151,11 +156,9 @@ export default {
   },
   async created() {
     const blogs = await this.getBlogs();
-    console.log(blogs);
     blogs.forEach((blog) => {
       this.blogs.push(blog);
     });
-    console.log(blogs[0].endpoint);
   },
   mounted() {
     const prefix = "I'm a ";
