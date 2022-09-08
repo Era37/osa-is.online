@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-grey md:flex text-white h-screen p-6">
-    <div class="m-auto h-screen">
+  <div class="bg-grey flex flex-col md:flex-row p-6 text-white h-screen">
+    <div class="mx-auto mt-32">
       <div class="pb-3">
         <img
           src="https://avatar.jessica-is.gay/496432681614180382"
@@ -103,7 +103,7 @@
         </li>
       </ul>
     </div>
-    <div class="mr-auto h-screen flex-col flex pb-10">
+    <div class="mr-auto mt-32 mx-auto flex-col flex pb-10">
       <div class="text-5xl font-extrabold mx-auto">
         My
         <span
