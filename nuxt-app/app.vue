@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-white">
     <NuxtPage />
   </div>
 </template>
@@ -10,7 +10,7 @@ export default {
     return {
       title: "Jessica",
       link: [{ rel: "icon", href: "/favicon.ico" }],
-      bodyAttrs: [{ style: "background-color: #18181b;" }],
+      bodyAttrs: [{ class: "bg-grey" }],
       meta: [
         {
           property: "og:image",

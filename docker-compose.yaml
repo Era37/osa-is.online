@@ -3,4 +3,34 @@ services:
     container_name: portfolio
     build: ./nuxt-app
     ports:
-      - 6000:3000
+      - 3000:3000
+    env_file:
+      - .env
+  api:
+    container_name: api
+    build: ./data-api
+    ports:
+      - 6300:80
+    env_file:
+      - .env
+  mongodb:
+    container_name: mongo_fifty_four
+    image: mongo
+    volumes:
+      - mydb:/data/db
+    env_file:
+      - .env
+    ports:
+      - 27016:27017
+  redisdb:
+    container_name: redis_fifty_four
+    image: redis
+    env_file:
+      - .env
+    ports:
+      - 6378:6379
+    command: >
+      --requirepass ${REDIS_PASSWORD}
+
+volumes:
+  mydb:

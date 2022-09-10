@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NuxtLink :href="url" class="cursor-pointer">
+    <NuxtLink :href="'/' + url" class="cursor-pointer">
       <p class="text-2xl font-bold">
         {{ emoji }}
         <span class="hover:underline hover:decoration-green-500">{{

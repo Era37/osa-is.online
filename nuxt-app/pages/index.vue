@@ -15,11 +15,11 @@
           >Jessica</span
         >.
       </div>
-      <div
-        class="pt-3 text-xl font-semibold text-salmon"
-        ref="job"
-        id="job"
-      ></div>
+      <div class="text-salmon text-xl font-semibold pt-3">
+        <span>{{ typewriterBase }}</span>
+        <span ref="job"></span>
+        <span class="blinker pl-0.5">|</span>
+      </div>
       <div class="pt-4 max-w-sm text-lg font-medium">
         {{ aboutMe }}
       </div>
@@ -117,41 +117,103 @@
           :key="i"
           :title="blog.title"
           :emoji="blog.emoji"
-          :date="blog.date"
+          :date="Number(blog.date)"
           :description="blog.description"
-          :url="blog.endpoint"
-          :est_time="blog.readTime"
+          :url="blog.url"
+          :est_time="blog.est_read_time"
         />
       </div>
       <div v-else class="flex py-8">
         <p class="text-gray-400 text-center font-medium m-auto">
-          There are no blogs to see there :(
+          There are no blogs to see here :(
         </p>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import Typewriter from "typewriter-effect/dist/core";
-import useStore from "../store/useStore";
+<style scoped>
+.blinker {
+  animation: blinker 0.75s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+</style>
+
+<script lang="ts">
+// @ts-ignore
+import { useRuntimeConfig } from "#imports";
+
+enum TypewriterDirection {
+  Increasing,
+  Decreasing,
+}
 
 export default {
   setup() {
-    const store = useStore();
-    const { apiURL } = store;
-    return { apiURL };
+    const config = useRuntimeConfig();
+    const apiBase = config.public.apiBase;
+    return { apiBase };
   },
   data() {
     return {
       aboutMe:
         "Hey! My name is Jessica, I'm a trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I love animated super heroes and painting my nails! My prefered pronouns are she/her.",
       blogs: [],
+      typewriterBase: "I'm a ",
+      typewriterIndex: 0,
+      typewriterDirection: TypewriterDirection.Increasing,
+      typewriterPhrases: [
+        "Fullstack Developer",
+        "Trans Woman",
+        "System Architect",
+        "Lesbian",
+      ],
     };
   },
   methods: {
     async getBlogs() {
-      return await (await fetch(this.apiURL + "blogs")).json();
+      return await (await fetch(this.apiBase + "blogs")).json();
+    },
+    delay(ms = 1000) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    },
+    async typewriterReset() {
+      this.typewriterDirection = TypewriterDirection.Increasing;
+      this.typewriterIndex = 0;
+    },
+    async typewriter(phrase, remove = false) {
+      const typewriter = this.$refs.job;
+      typewriter.innerHTML = phrase.substring(0, this.typewriterIndex + 1);
+      if (!remove) {
+        this.typewriterIndex++;
+      } else {
+        this.typewriterIndex--;
+      }
+      if (this.typewriterIndex === phrase.length) {
+        // executed when the the phrase is fully typed
+        await this.delay();
+        this.typewriterDirection = TypewriterDirection.Decreasing;
+      }
+      const removing =
+        this.typewriterDirection === TypewriterDirection.Decreasing
+          ? true
+          : false;
+      if (
+        this.typewriterDirection === TypewriterDirection.Decreasing &&
+        typewriter.innerHTML.length === 0
+      ) {
+        // executed when the phrase has been removed
+        return;
+      } else {
+        await this.delay(100);
+        await this.typewriter(phrase, removing);
+      }
     },
   },
   async created() {
@@ -160,28 +222,17 @@ export default {
       this.blogs.push(blog);
     });
   },
-  mounted() {
-    const prefix = "I'm a ";
-    const jobs = [
-      "Fullstack Developer",
-      "Trans Woman",
-      "System Architect",
-      "Lesbian",
-    ];
-    const typewriter = new Typewriter(document.getElementById("job"), {
-      loop: true,
-      deleteSpeed: 30,
-      delay: 50,
-    });
-    typewriter.typeString(prefix);
-    for (let job of jobs) {
-      if (jobs.indexOf(job) !== 0) {
-        typewriter.deleteChars(jobs[jobs.indexOf(job) - 1].length);
+  async mounted() {
+    const { typewriter, typewriterPhrases, delay, typewriterReset } = this;
+    async function runTypeWriter(refs: any) {
+      for (const phrase of typewriterPhrases) {
+        await typewriter(phrase, false);
+        await delay(500);
+        await typewriterReset();
+        typewriterPhrases.push(phrase);
       }
-      typewriter.typeString(job);
-      typewriter.pauseFor(1500);
     }
-    typewriter.start();
+    await runTypeWriter(this.$refs);
   },
 };
 </script>
