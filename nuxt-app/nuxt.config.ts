@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],
     runtimeConfig: {
         public: {
-            apiBase: "https://jessica-is.gay/"
+            apiBase: "https://api.jessica-is.gay/"
         }
     },
 })
