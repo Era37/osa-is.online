@@ -49,7 +49,7 @@ export default {
       } else {
         flag = round(elapsed / msPerYear) + " year";
       }
-      if (flag.includes("1")) {
+      if (Number(flag.slice(0, 2)) === 1) {
         flag += " ago";
       } else {
         flag += "s ago";
