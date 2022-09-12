@@ -14,7 +14,7 @@ services:
     env_file:
       - .env
   mongodb:
-    container_name: mongo_fifty_four
+    container_name: mongo_portfolio
     image: mongo
     volumes:
       - mydb:/data/db
@@ -23,7 +23,7 @@ services:
     ports:
       - 27016:27017
   redisdb:
-    container_name: redis_fifty_four
+    container_name: redis_portfolio
     image: redis
     env_file:
       - .env
