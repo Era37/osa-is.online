@@ -7,6 +7,7 @@ import postcss from "postcss";
 import fp from "fastify-plugin";
 
 const blogs: FastifyPluginAsync = async (server: FastifyInstance) => {
+    /*
     server.post<{
         Body: {
             content: string,
@@ -22,6 +23,7 @@ const blogs: FastifyPluginAsync = async (server: FastifyInstance) => {
             .collection("blogs")
             .insertOne(req.body);
     });
+    */
 
     server.get("/blogs", async (req, res): Promise<Array<BlogPreview>> => {
         const blogPreviewArray: Array<BlogPreview> = [];
