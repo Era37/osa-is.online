@@ -11,7 +11,12 @@
       <div class="text-5xl font-extrabold">
         Hey, I'm
         <span
-          class="text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-red-600"
+          class="
+            text-transparent
+            bg-clip-text bg-gradient-to-br
+            from-pink-400
+            to-red-600
+          "
           >Jessica</span
         >.
       </div>
@@ -28,7 +33,13 @@
           <a target="_blank" href="https://twitter.com/Era3037"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
-              class="hover:fill-salmon ease-out duration-300 fill-white hover:-translate-y-1"
+              class="
+                hover:fill-salmon
+                ease-out
+                duration-300
+                fill-white
+                hover:-translate-y-1
+              "
               width="26"
               height="31"
               viewBox="0 0 24 24"
@@ -45,7 +56,13 @@
             href="https://discordhub.com/profile/768615938055471116"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
-              class="hover:fill-salmon ease-out duration-300 fill-white hover:-translate-y-1"
+              class="
+                hover:fill-salmon
+                ease-out
+                duration-300
+                fill-white
+                hover:-translate-y-1
+              "
               height="30"
               width="30"
               viewBox="0 0 127.14 96.36"
@@ -71,7 +88,13 @@
           <a target="_blank" href="https://github.com/Era37"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
-              class="hover:fill-salmon ease-out duration-300 fill-white hover:-translate-y-1"
+              class="
+                hover:fill-salmon
+                ease-out
+                duration-300
+                fill-white
+                hover:-translate-y-1
+              "
               width="30"
               height="30"
               viewBox="0 0 24 24"
@@ -87,7 +110,13 @@
             target="_blank"
             href="https://open.spotify.com/user/vvknrxqpb2g7ql3dx3l6m09ro"
             ><svg
-              class="hover:fill-salmon ease-out duration-300 hover:-translate-y-1 fill-white"
+              class="
+                hover:fill-salmon
+                ease-out
+                duration-300
+                hover:-translate-y-1
+                fill-white
+              "
               width="30"
               height="30"
               viewBox="0 0 24 24"
@@ -102,12 +131,40 @@
           </a>
         </li>
       </ul>
+      <div class="font-extrabold text-xl pt-4">
+        My
+        <span
+          class="
+            text-transparent
+            bg-clip-text bg-gradient-to-br
+            from-amber-500
+            to-orange-500
+          "
+          >Favorite</span
+        >
+        Songs
+      </div>
+      <div class="space-y-2 py-2">
+        <Song
+          v-for="(song, i) in songs"
+          :key="i"
+          :name="song.track.name"
+          :image="song.track.album.images[1].url"
+          :artist="song.track.album.artists[0].name"
+          :endpoint="song.track.external_urls.spotify"
+        />
+      </div>
     </div>
     <div class="mr-auto mt-32 mx-auto flex-col flex pb-10">
       <div class="text-5xl font-extrabold mx-auto">
         My
         <span
-          class="text-transparent bg-clip-text bg-gradient-to-br from-lime-400 to-green-500"
+          class="
+            text-transparent
+            bg-clip-text bg-gradient-to-br
+            from-lime-400
+            to-green-500
+          "
           >Blogs</span
         >.
       </div>
@@ -163,6 +220,7 @@ export default {
       aboutMe:
         "Hey! My name is Jessica, I'm a trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I love animated super heroes and painting my nails! My prefered pronouns are she/her.",
       blogs: [],
+      songs: [],
       typewriterBase: "I'm a ",
       typewriterIndex: 0,
       typewriterDirection: TypewriterDirection.Increasing,
@@ -175,8 +233,8 @@ export default {
     };
   },
   methods: {
-    async getBlogs() {
-      return await (await fetch(this.apiBase + "blogs")).json();
+    async getEntries(endpoint: string) {
+      return await (await fetch(this.apiBase + endpoint)).json();
     },
     delay(ms = 1000) {
       return new Promise((resolve) => {
@@ -217,14 +275,19 @@ export default {
     },
   },
   async created() {
-    const blogs = await this.getBlogs();
-    blogs.forEach((blog) => {
-      this.blogs.push(blog);
+    const values = [
+      { stateValue: "blogs", endpoint: "blogs" },
+      { stateValue: "songs", endpoint: "spotifySongs" },
+    ];
+    values.forEach(async (value) => {
+      const { endpoint, stateValue } = value;
+      this[stateValue] = await this.getEntries(endpoint);
+      console.log(this[stateValue]);
     });
   },
   async mounted() {
     const { typewriter, typewriterPhrases, delay, typewriterReset } = this;
-    async function runTypeWriter(refs: any) {
+    async function runTypeWriter() {
       for (const phrase of typewriterPhrases) {
         await typewriter(phrase, false);
         await delay(500);
@@ -232,7 +295,7 @@ export default {
         typewriterPhrases.push(phrase);
       }
     }
-    await runTypeWriter(this.$refs);
+    await runTypeWriter();
   },
 };
 </script>

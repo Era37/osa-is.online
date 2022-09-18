@@ -1,11 +1,28 @@
 import { FastifyPluginAsync, FastifyInstance } from "fastify";
 import { BlogPreview, Blog, TailwindConfig } from "../utils/interfaces";
 import { cacheData } from "../utils/utilFunctions";
+import Db from "../utils/database";
 import tailwindcss from "tailwindcss";
 import postcss from "postcss";
 import fp from "fastify-plugin";
 
 const blogs: FastifyPluginAsync = async (server: FastifyInstance) => {
+    server.post<{
+        Body: {
+            content: string,
+            url: string,
+            description: string,
+            emoji: string,
+            est_read_time: string,
+            date: number,
+            title: string
+        }
+    }>("/new", async (req, res): Promise<void> => {
+        await Db.mongo
+            .collection("blogs")
+            .insertOne(req.body);
+    });
+
     server.get("/blogs", async (req, res): Promise<Array<BlogPreview>> => {
         const blogPreviewArray: Array<BlogPreview> = [];
         const blogArray: Array<BlogPreview> = await cacheData({
@@ -23,14 +40,14 @@ const blogs: FastifyPluginAsync = async (server: FastifyInstance) => {
                 url
             });
         });
-        return blogPreviewArray;
+        return blogPreviewArray.reverse();
     });
 
-    server.get<{Params: {endpoint: string}}>("/blog/:endpoint", async (req, res): Promise<Blog | null> => {
+    server.get<{ Params: { endpoint: string } }>("/blog/:endpoint", async (req, res): Promise<Blog | null> => {
         const id: string = req.params.endpoint;
         const blogData = (await cacheData({
             key: `${id}-blog`,
-            dataSchema: {url: id},
+            dataSchema: { url: id },
         }))[0];
         if (!blogData) return null
         const { date, est_read_time, title, emoji, description, url, content } = blogData;
