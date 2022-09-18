@@ -2,7 +2,7 @@ import Fastify from "fastify";
 import database from "./utils/database";
 import dotenv from "dotenv";
 import cors from "@fastify/cors";
-dotenv.config({ path: "../vars/.env" });
+dotenv.config({ path: "./.env" });
 
 const server = Fastify({ logger: true });
 const origin = process.env.SPACE === 'dev' ? true : ["https://jessica-is.gay"];
