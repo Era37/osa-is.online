@@ -5,28 +5,28 @@ services:
     ports:
       - 6000:3000
     env_file:
-      - .env
+      - ./vars/.env
   api:
     container_name: api
     build: ./data-api
     ports:
       - 6300:80
     env_file:
-      - .env
+      - ./vars/.env
   mongodb:
     container_name: mongo_portfolio
     image: mongo
     volumes:
       - mydb:/data/db
     env_file:
-      - .env
+      - ./vars/.env
     ports:
       - 27016:27017
   redisdb:
     container_name: redis_portfolio
     image: redis
     env_file:
-      - .env
+      - ./vars/.env
     ports:
       - 6378:6379
     command: >
