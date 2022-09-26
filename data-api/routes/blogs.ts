@@ -7,8 +7,10 @@ import postcss from "postcss";
 import fp from "fastify-plugin";
 
 const blogs: FastifyPluginAsync = async (server: FastifyInstance) => {
-    /*
     server.post<{
+        Headers: {
+            token: string
+        },
         Body: {
             content: string,
             url: string,
@@ -19,11 +21,14 @@ const blogs: FastifyPluginAsync = async (server: FastifyInstance) => {
             title: string
         }
     }>("/new", async (req, res): Promise<void> => {
-        await Db.mongo
-            .collection("blogs")
-            .insertOne(req.body);
+        if (req.headers.token === process.env.KEY) {
+            await Db.mongo
+                .collection("blogs")
+                .insertOne(req.body);
+        } else {
+            res.statusCode = 400;
+        };
     });
-    */
 
     server.get("/blogs", async (req, res): Promise<Array<BlogPreview>> => {
         const blogPreviewArray: Array<BlogPreview> = [];

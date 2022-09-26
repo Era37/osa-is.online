@@ -282,7 +282,6 @@ export default {
     values.forEach(async (value) => {
       const { endpoint, stateValue } = value;
       this[stateValue] = await this.getEntries(endpoint);
-      console.log(this[stateValue]);
     });
   },
   async mounted() {
