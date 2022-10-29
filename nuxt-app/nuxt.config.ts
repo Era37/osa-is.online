@@ -8,4 +8,7 @@ export default defineNuxtConfig({
             apiBase: "https://api.jessica-is.gay/"
         }
     },
+    experimental: {
+        writeEarlyHints: false,
+    }
 })
