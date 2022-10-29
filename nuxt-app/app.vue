@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  useHead() {
+  head() {
     return {
       title: "Jessica",
       link: [{ rel: "icon", href: "/favicon.ico" }],

@@ -5,7 +5,8 @@ import cors from "@fastify/cors";
 dotenv.config({ path: "./.env" });
 
 const server = Fastify({ logger: true });
-const origin = process.env.SPACE === 'dev' ? true : ["https://jessica-is.gay"];
+// const origin = process.env.SPACE === 'dev' ? true : ["https://jessica-is.gay"];
+const origin = true;
 // Register route files
 server.register(cors, {
     origin: origin,
