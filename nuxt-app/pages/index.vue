@@ -15,14 +15,8 @@
           >Jessica</span
         >.
       </div>
-      <div class="text-salmon text-xl font-semibold pt-3">
-        <span>{{ typewriterBase }}</span>
-        <span ref="job"></span>
-        <span class="blinker pl-0.5">|</span>
-      </div>
-      <div class="pt-4 max-w-sm text-lg font-medium">
-        {{ aboutMe }}
-      </div>
+      <TypeWriter />
+      <div class="pt-4 max-w-sm text-lg font-medium" v-html="aboutMe"></div>
       <ul class="pl-2 flex space-x-4 pt-2">
         <li class="cursor-pointer">
           <a target="_blank" href="https://www.reddit.com/user/Era3037/"
@@ -150,25 +144,8 @@
   </div>
 </template>
 
-<style scoped>
-.blinker {
-  animation: blinker 0.75s linear infinite;
-}
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-}
-</style>
-
-<script lang="ts">
-// @ts-ignore
+<script>
 import { useRuntimeConfig } from "#imports";
-
-enum TypewriterDirection {
-  Increasing,
-  Decreasing,
-}
 
 export default {
   setup() {
@@ -178,63 +155,22 @@ export default {
   },
   data() {
     return {
-      aboutMe:
-        "Hey! My name is Jessica, I'm a trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I love animated super heroes and painting my nails! My prefered pronouns are she/her.",
+      aboutMe: `Hey! My name is Jessica, I'm a ${this.age()} year old trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I have a very amazing girlfriend named <a class="infline-flex text-salmon hover:brightness-125" href="https://paulie.works/">pauline</a>. I also love animated super heroes and painting my nails! My prefered pronouns are she/her.`,
       blogs: [],
       songs: [],
-      typewriterBase: "I'm a ",
-      typewriterIndex: 0,
-      typewriterDirection: TypewriterDirection.Increasing,
-      typewriterPhrases: [
-        "Fullstack Developer",
-        "Trans Woman",
-        "System Architect",
-        "Lesbian",
-      ],
     };
   },
   methods: {
-    async getEntries(endpoint: string) {
+    async getEntries(endpoint) {
       return await (await fetch(this.apiBase + endpoint)).json();
     },
-    delay(ms = 1000) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-      });
-    },
-    async typewriterReset() {
-      this.typewriterDirection = TypewriterDirection.Increasing;
-      this.typewriterIndex = 0;
-    },
-    async typewriter(phrase, remove = false) {
-      const typewriter = this.$refs.job;
-      typewriter.innerHTML = phrase.substring(0, this.typewriterIndex + 1);
-      if (!remove) {
-        this.typewriterIndex++;
-      } else {
-        this.typewriterIndex--;
-      }
-      if (this.typewriterIndex === phrase.length) {
-        // executed when the the phrase is fully typed
-        await this.delay();
-        this.typewriterDirection = TypewriterDirection.Decreasing;
-      }
-      const removing =
-        this.typewriterDirection === TypewriterDirection.Decreasing
-          ? true
-          : false;
-      if (
-        this.typewriterDirection === TypewriterDirection.Decreasing &&
-        typewriter.innerHTML.length === 0
-      ) {
-        // executed when the phrase has been removed
-        return;
-      } else {
-        await this.delay(100);
-        await this.typewriter(phrase, removing);
-      }
+    age() {
+      const born = 1142958600;
+      const age = Date.now() / 1000 - born;
+      return Math.floor(age / 31_536_000);
     },
   },
+  computed: {},
   async created() {
     const values = [
       { stateValue: "blogs", endpoint: "blogs" },
@@ -242,20 +178,9 @@ export default {
     ];
     values.forEach(async (value) => {
       const { endpoint, stateValue } = value;
+      // @ts-ignore
       this[stateValue] = await this.getEntries(endpoint);
     });
-  },
-  async mounted() {
-    const { typewriter, typewriterPhrases, delay, typewriterReset } = this;
-    async function runTypeWriter() {
-      for (const phrase of typewriterPhrases) {
-        await typewriter(phrase, false);
-        await delay(500);
-        await typewriterReset();
-        typewriterPhrases.push(phrase);
-      }
-    }
-    await runTypeWriter();
   },
 };
 </script>

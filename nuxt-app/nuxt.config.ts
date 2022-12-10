@@ -10,5 +10,8 @@ export default defineNuxtConfig({
     },
     experimental: {
         writeEarlyHints: false,
+    },
+    typescript: {
+      strict: true,
     }
 })
