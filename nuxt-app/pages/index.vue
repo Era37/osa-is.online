@@ -155,7 +155,7 @@ export default {
   },
   data() {
     return {
-      aboutMe: `Hey! My name is Jessica, trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I have a very amazing girlfriend named <a class="infline-flex text-salmon hover:brightness-125" href="https://paulie.works/">pauline</a>. I also love animated super heroes and painting my nails! My prefered pronouns are she/her.`,
+      aboutMe: `Hey! My name is Jessica, and I'm trans girl from Canada. I'm also a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I have a very amazing girlfriend named <a class="infline-flex text-salmon hover:brightness-125" href="https://paulie.works/">pauline</a>. I also love animated super heroes and painting my nails! My prefered pronouns are she/her.`,
       blogs: [],
       songs: [],
     };
