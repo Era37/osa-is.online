@@ -155,7 +155,7 @@ export default {
   },
   data() {
     return {
-      aboutMe: `Hey! My name is Jessica, I'm a ${this.age()} year old trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I have a very amazing girlfriend named <a class="infline-flex text-salmon hover:brightness-125" href="https://paulie.works/">pauline</a>. I also love animated super heroes and painting my nails! My prefered pronouns are she/her.`,
+      aboutMe: `Hey! My name is Jessica, trans girl from Canada. I'm a fullstack developer who works with Python, Node.js, Vue, Tailwind, Rust and much more. I have a very amazing girlfriend named <a class="infline-flex text-salmon hover:brightness-125" href="https://paulie.works/">pauline</a>. I also love animated super heroes and painting my nails! My prefered pronouns are she/her.`,
       blogs: [],
       songs: [],
     };
@@ -163,11 +163,6 @@ export default {
   methods: {
     async getEntries(endpoint) {
       return await (await fetch(this.apiBase + endpoint)).json();
-    },
-    age() {
-      const born = 1142958600;
-      const age = Date.now() / 1000 - born;
-      return Math.floor(age / 31_536_000);
     },
   },
   computed: {},
