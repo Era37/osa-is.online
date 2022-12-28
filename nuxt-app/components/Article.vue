@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="url" class="article-entry space-y">
-    <span class="front">*</span>
+    <span class="front yellow">*</span>
     <span>{{ title }}</span>
   </NuxtLink>
 </template>
@@ -16,7 +16,6 @@ export default {
 
 <style lang="scss" scoped>
 .front {
-  color: #ffff66;
   padding-right: 0.5rem;
 }
 

@@ -10,11 +10,28 @@
 .title {
   font-weight: bold;
   font-size: 30px;
+}
+
+.title-box {
   padding-bottom: 2rem;
+}
+
+.small-top-padding {
+  padding-top: 1rem;
 }
 
 .bold {
   font-weight: bold;
+}
+
+.section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.section-small {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .padding {
@@ -31,6 +48,18 @@
 
 .flex {
   display: flex;
+}
+
+.yellow {
+  color: #ffff66;
+}
+
+.padding-light {
+  padding: 1rem;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
 }
 
 .flex-col {

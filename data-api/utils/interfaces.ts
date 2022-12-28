@@ -1,33 +1,31 @@
 import { Filter, Document } from "mongodb";
 
 export interface DatabaseKeys {
-    mongoURL: string,
-    redisURL: string
-};
+  mongoURL: string;
+  redisURL: string;
+}
 
 export interface BlogPreview {
-    title: string,
-    emoji: string,
-    date: number,
-    url: string,
-    description: string,
-    est_read_time: string,
-};
+  title: string;
+  url: string;
+}
 
 export interface Blog extends BlogPreview {
-    content: string
-};
+  content: string;
+  date: number;
+  description: string;
+}
 
 interface TailwindConfigContent {
-    raw: string,
-    extension: string,
-};
+  raw: string;
+  extension: string;
+}
 
 export interface TailwindConfig {
-    content: Array<TailwindConfigContent>
-};
+  content: Array<TailwindConfigContent>;
+}
 
 export interface cacheFuncOptions {
-    key: string,
-    dataSchema: Filter<Document>,
+  key: string;
+  dataSchema: Filter<Document>;
 }

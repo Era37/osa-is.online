@@ -2,7 +2,9 @@
   <div class="flex flex-col section">
     <div class="center-x padding flex flex-col">
       <div class="max-w">
-        <p class="title">i'm <span class="pink-underline">jessica</span></p>
+        <p class="title title-box">
+          i'm <span class="pink-underline">jessica</span>
+        </p>
         <p>
           hey! my name is jessica, and i'm trans girl from canada. I'm also a
           fullstack developer who works with python, node.js, vue, tailwind,
@@ -16,9 +18,14 @@
         <span class="bold">my articles:</span>
         <div class="article-offset flex flex-col">
           <Article
-            title="Does altitude affect the distance a ball travels when hit?"
+            v-if="articles.length"
+            v-for="article in articles"
+            :title="article.title"
+            :url="article.url"
           />
-          <Article title="Is the innovation of iPhones dead?" />
+          <div v-else class="space-x small-top-padding">
+            sorry no articles right now :c
+          </div>
         </div>
       </div>
       <div class="center-x">
@@ -37,18 +44,8 @@
 <style scoped lang="scss">
 $salmon: #ff7391;
 
-.section {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
 .article-offset {
   padding-left: 2rem;
-}
-
-.section-small {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .link {
@@ -65,10 +62,24 @@ $salmon: #ff7391;
 }
 </style>
 
-<script>
+<script lang="ts">
+interface BlogPreview {
+  title: string;
+  url: string;
+}
+
 export default {
+  async created() {
+    // @ts-expect-error
+    const config = useRuntimeConfig();
+    const apiURL = config.public.apiBase;
+    (await (await fetch(apiURL + "/blogs")).json()).forEach((blog: any) => {
+      this.articles.push(blog);
+    });
+  },
   data() {
     return {
+      articles: [] as BlogPreview[],
       social_media: [
         {
           name: "post",
