@@ -55,6 +55,11 @@ useHead({
       content: "Another trans catgirl on the internet",
     },
     {
+      hid: "description",
+      name: "description",
+      content: "Another trans catgirl on the internet",
+    },
+    {
       property: "theme-color",
       content: "#18181b",
     },
