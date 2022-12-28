@@ -10,8 +10,6 @@
     "nuxt": "^3.0.0"
   },
   "dependencies": {
-    "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/tailwindcss": "^6.1.3",
-    "@pinia/nuxt": "^0.4.6"
+    "sass": "^1.57.1"
   }
 }

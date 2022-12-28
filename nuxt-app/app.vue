@@ -4,11 +4,34 @@
   </div>
 </template>
 
+<style lang="scss">
+body {
+  background-color: black;
+  font-family: "main-font";
+  color: white;
+}
+
+p,
+body,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+@font-face {
+  font-family: "main-font";
+  src: url("~/assets/main.ttf");
+}
+</style>
+
 <script setup>
 useHead({
-  title: "Jessica",
-  link: [{ rel: "icon", href: "/favicon.ico" }],
-  bodyAttrs: [{ class: "bg-grey" }],
+  title: "jessica",
   meta: [
     {
       property: "og:image",
