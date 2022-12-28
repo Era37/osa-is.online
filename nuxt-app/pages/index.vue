@@ -4,12 +4,12 @@
       <div class="max-w">
         <p class="title">i'm <span class="pink-underline">jessica</span></p>
         <p>
-          Hey! My name is Jessica, and I'm trans girl from Canada. I'm also a
-          fullstack developer who works with Python, Node.js, Vue, Tailwind,
-          Rust and much more. I have a very amazing girlfriend named
+          hey! my name is jessica, and i'm trans girl from canada. I'm also a
+          fullstack developer who works with python, node.js, vue, tailwind,
+          rust and much more. i have a very amazing girlfriend named
           <a href="https://paulie.works/" target="_blank" class="link"
             >pauline</a
-          >. I also painting my nails and prefered pronouns are she/her.
+          >. i also painting my nails and prefered pronouns are she/her.
         </p>
       </div>
       <div class="section-small">
