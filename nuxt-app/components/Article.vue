@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="url" class="article-entry">
+  <NuxtLink :to="url" class="article-entry space-y">
     <span class="front">*</span>
     <span>{{ title }}</span>
   </NuxtLink>
