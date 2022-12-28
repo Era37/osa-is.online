@@ -5,7 +5,6 @@ import cors from "@fastify/cors";
 dotenv.config({ path: "./.env" });
 
 const server = Fastify();
-const origin = process.env.SPACE === "dev" ? true : ["https://jessica-is.gay"]; //
 
 server.setErrorHandler((error) => {
   console.log(error);
