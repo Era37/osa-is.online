@@ -3,7 +3,7 @@
     <NuxtLink to="/" class="hover-underline">&lt;- Back</NuxtLink>
   </div>
   <div class="flex flex-col">
-    <div class="center-x section padding max-w" v-if="rendered">
+    <div class="center-x section padding max-w-large" v-if="rendered">
       <div class="title-box">
         <div class="title">{{ blog.title }}</div>
         <div>
