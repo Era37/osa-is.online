@@ -6,12 +6,9 @@
           i'm <span class="pink-underline">jessica</span>
         </p>
         <p>
-          hey! my name is jessica, and i'm trans girl from canada. I'm also a
+          hey! my name is jessica, and i'm trans girl from canada. i'm also a
           fullstack developer who works with python, node.js, vue, tailwind,
-          rust and much more. i have a very amazing girlfriend named
-          <a href="https://paulie.works/" target="_blank" class="link"
-            >pauline</a
-          >. i also painting my nails and prefered pronouns are she/her.
+          rust and much more. i also painting my nails and prefered pronouns are she/her.
         </p>
       </div>
       <div class="section-small">
