@@ -8,7 +8,8 @@ pub struct Blog {
     pub title: String
 }
 
-pub struct _BlogPreview {
+#[derive(Serialize, Deserialize)]
+pub struct BlogPreview {
     pub title: String,
     pub url: String
 }
