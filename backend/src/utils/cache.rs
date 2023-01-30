@@ -8,7 +8,7 @@ use serde_json::to_string;
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 
-pub async fn cache_data<'a, T>(key: String, filter: impl Into<Option<Document>>, database: &'a Db) -> Option<Vec<T>> where T: DeserializeOwned + Serialize {
+pub async fn cache_data<'a, T>(key: String, filter: impl Into<Option<Document>>, database: &'a Db) -> Option<Vec<T>> where T: DeserializeOwned + Serialize + std::fmt::Debug {
     let mut redis_conn: PooledConnection<RedisConnectionManager> = database.redis.get().unwrap();
     let value: Option<String> = redis_conn.get(&key).ok();
     if value != None {
@@ -19,6 +19,9 @@ pub async fn cache_data<'a, T>(key: String, filter: impl Into<Option<Document>>,
         let mut database_cursor = collection.find(filter, None).await.unwrap();
         let mut database_data: Vec<T> = Vec::new();
         while let Ok(entry) = database_cursor.try_next().await {
+            if entry == None {
+                break;
+            }
             let converted_entry: T = from_bson(Bson::Document(entry.unwrap())).unwrap();
             database_data.push(converted_entry);
         }

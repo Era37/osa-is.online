@@ -4,7 +4,7 @@ mod utils;
 mod endpoints;
 use utils::{Db, build_db};
 
-use endpoints::blogs::new_blog;
+use endpoints::blogs::{new_blog, get_blogs};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -14,6 +14,7 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .service(new_blog)
+            .service(get_blogs)
             .app_data(web::Data::new(db.clone()))
     })
     .bind(("0.0.0.0", 8080))?
