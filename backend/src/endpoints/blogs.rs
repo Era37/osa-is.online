@@ -23,3 +23,10 @@ pub async fn get_blogs(data: web::Data<Db>) -> impl Responder {
     };
     HttpResponse::Ok().json(web::Json(blogs))
 }
+
+#[get("/blogs/{id}")]
+pub async fn find_blog(path: web::Path<(String,)>, data: web::Data<Db>) -> impl Responder {
+    let url_id = path.into_inner().0;
+    let blog: Vec<Blog> = cache_data("blogs".to_string(), doc! { "url": url_id }, &data).await.unwrap();
+    HttpResponse::Ok().json(web::Json(&blog[0]))
+}

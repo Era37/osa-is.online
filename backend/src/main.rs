@@ -4,7 +4,7 @@ mod utils;
 mod endpoints;
 use utils::{Db, build_db};
 
-use endpoints::blogs::{new_blog, get_blogs};
+use endpoints::blogs::{new_blog, get_blogs, find_blog};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -13,6 +13,7 @@ async fn main() -> std::io::Result<()> {
     println!("Online");
     HttpServer::new(move || {
         App::new()
+            .service(find_blog)
             .service(new_blog)
             .service(get_blogs)
             .app_data(web::Data::new(db.clone()))
