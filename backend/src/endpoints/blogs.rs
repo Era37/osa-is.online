@@ -1,5 +1,5 @@
 use actix_web::{post, get, web, HttpResponse, Responder, HttpRequest};
-use crate::utils::{Db, Blog, cache_data, BlogPreview};
+use crate::utils::{Db, Blog, cache_data, BlogPreview, Error};
 use mongodb::{bson::doc};
 use r2d2_redis::{redis::Commands};
 use std::thread;
@@ -35,7 +35,7 @@ pub async fn find_blog(path: web::Path<(String,)>, data: web::Data<Db>) -> impl 
     let url_id = path.into_inner().0;
     let blog: Vec<Blog> = cache_data(url_id.clone(), doc! { "url": url_id }, &data, "blogs").await.unwrap();
     if blog.len() == 0 {
-        return HttpResponse::BadRequest().body("Invalid blog URL");
+        return HttpResponse::BadRequest().json(web::Json(Error {message: "Can't find blog"}));
     }
     HttpResponse::Ok().json(web::Json(&blog[0]))
 }

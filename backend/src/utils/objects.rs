@@ -14,3 +14,8 @@ pub struct BlogPreview {
     pub title: String,
     pub url: String
 }
+
+#[derive(Serialize, Debug)]
+pub struct Error<'a> {
+    pub message: &'a str
+}

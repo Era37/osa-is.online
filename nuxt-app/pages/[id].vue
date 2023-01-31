@@ -4,13 +4,17 @@
   </div>
   <div class="flex flex-col">
     <div class="center-x section padding max-w-large" v-if="rendered">
-      <div class="title-box">
-        <div class="title">{{ blog.title }}</div>
-        <div>
-          Written: <span class="yellow">{{ findTime(Number(blog.date)) }}</span>
+      <div v-if="notFound">this isn't a blog, sorry :c</div>
+      <div v-else>
+        <div class="title-box">
+          <div class="title">{{ blog.title }}</div>
+          <div>
+            Written:
+            <span class="yellow">{{ findTime(Number(blog.date)) }}</span>
+          </div>
         </div>
+        <div v-html="blog_content"></div>
       </div>
-      <div v-html="blog_content"></div>
     </div>
   </div>
 </template>
@@ -33,15 +37,21 @@ export default {
     return {
       blog: {} as Blog,
       rendered: false,
+      notFound: false,
       blog_content: "",
     };
   },
   async created() {
-    this.blog = await (
-      await fetch(this.apiBase + `/blogs/${this.$route.params.id}`)
-    ).json();
-    this.blog_content = this.markupBlog(this.blog.content);
-    this.rendered = true;
+    try {
+      this.blog = await (
+        await fetch(this.apiBase + `/blogs/${this.$route.params.id}`)
+      ).json();
+      this.blog_content = this.markupBlog(this.blog.content);
+      this.rendered = true;
+    } catch {
+      this.rendered = true;
+      this.notFound = true;
+    }
   },
   methods: {
     markupBlog(blog: string): string {
