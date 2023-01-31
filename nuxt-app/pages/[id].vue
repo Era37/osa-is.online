@@ -37,7 +37,7 @@ export default {
   },
   async created() {
     this.blog = await (
-      await fetch(this.apiBase + `/blog/${this.$route.params.id}`)
+      await fetch(this.apiBase + `/blogs/${this.$route.params.id}`)
     ).json();
     this.rendered = true;
   },

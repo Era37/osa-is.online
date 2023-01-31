@@ -3,7 +3,7 @@ use serde::{Serialize, Deserialize};
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Blog {
     pub content: String,
-    pub date: u32,
+    pub date: u64,
     pub description: String,
     pub title: String,
     pub url: String
