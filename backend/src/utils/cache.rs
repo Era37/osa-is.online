@@ -25,10 +25,8 @@ pub async fn cache_data<'a, T>(key: String, filter: impl Into<Option<Document>>,
             let converted_entry: T = from_bson(Bson::Document(entry.unwrap())).unwrap();
             database_data.push(converted_entry);
         }
-        if database_data.len() != 0 {
-            let _ : () = redis_conn.set(&key, to_string(&database_data).unwrap()).unwrap();
-            let _: () = redis_conn.expire(&key, 300).unwrap();
-        }
+        let _ : () = redis_conn.set(&key, to_string(&database_data).unwrap()).unwrap();
+        let _: () = redis_conn.expire(&key, 300).unwrap();
         return Some(database_data);
     }
 }
