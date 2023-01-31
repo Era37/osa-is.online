@@ -10,7 +10,7 @@
           Written: <span class="yellow">{{ findTime(Number(blog.date)) }}</span>
         </div>
       </div>
-      <div v-html="blog.content"></div>
+      <div v-html="blog_content"></div>
     </div>
   </div>
 </template>
@@ -33,15 +33,20 @@ export default {
     return {
       blog: {} as Blog,
       rendered: false,
+      blog_content: "",
     };
   },
   async created() {
     this.blog = await (
       await fetch(this.apiBase + `/blogs/${this.$route.params.id}`)
     ).json();
+    this.blog_content = this.markupBlog(this.blog.content);
     this.rendered = true;
   },
   methods: {
+    markupBlog(blog: string): string {
+      return blog.replaceAll("\n", "<br>");
+    },
     findTime(time: number): string {
       const date = new Date(time);
       const months: Array<string> = [
