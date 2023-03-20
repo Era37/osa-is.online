@@ -8,7 +8,8 @@
         <p>
           hey! my name is jessica, and i'm trans girl from canada. i'm also a
           fullstack developer who works with python, node.js, vue, tailwind,
-          rust and much more. i've been on estrogen since january 19th 2023 and my prefered pronouns are she/her.
+          rust and much more. i've been on estrogen since january 19th 2023 and
+          my prefered pronouns are she/her.
         </p>
       </div>
       <div class="section-small">
@@ -80,7 +81,7 @@ export default {
       social_media: [
         {
           name: "post",
-          link: "https://post.news/era3037",
+          link: "https://post.news/@/era3037",
           hex: "#658bf5",
         },
         {
@@ -102,6 +103,11 @@ export default {
           name: "spotify",
           link: "https://open.spotify.com/user/vvknrxqpb2g7ql3dx3l6m09ro",
           hex: "#1ed760",
+        },
+        {
+          name: "mastodon",
+          link: "https://catcatnya.com/@era3037",
+          hex: "#605eee",
         },
       ],
     };
