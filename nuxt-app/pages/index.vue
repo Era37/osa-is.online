@@ -26,14 +26,16 @@
           </div>
         </div>
       </div>
-      <div class="center-x">
-        <SocialMedia
-          class="space-x"
-          v-for="media in social_media"
-          :link="media.link"
-          :hex="media.hex"
-          :name="media.name"
-        />
+      <div class="w-screen">
+        <div class="center-x flex-wrap flex">
+          <SocialMedia
+            class="space-x"
+            v-for="media in social_media"
+            :link="media.link"
+            :hex="media.hex"
+            :name="media.name"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -79,11 +81,6 @@ export default {
     return {
       articles: [] as BlogPreview[],
       social_media: [
-        {
-          name: "post",
-          link: "https://post.news/@/era3037",
-          hex: "#658bf5",
-        },
         {
           name: "discord",
           link: "https://discordhub.com/profile/768615938055471116",
