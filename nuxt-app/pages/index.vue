@@ -103,7 +103,7 @@ export default {
         },
         {
           name: "mastodon",
-          link: "https://catcatnya.com/@era3037",
+          link: "https://mastodon.social/@era3037",
           hex: "#605eee",
         },
       ],
