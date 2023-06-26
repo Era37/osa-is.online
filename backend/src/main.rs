@@ -1,11 +1,11 @@
-use actix_web::{App, web, HttpServer};
 use actix_cors::Cors;
+use actix_web::{web, App, HttpServer};
 use dotenvy::dotenv;
-mod utils;
 mod endpoints;
-use utils::{Db, build_db};
+mod utils;
+use utils::{build_db, Db};
 
-use endpoints::blogs::{new_blog, get_blogs, find_blog};
+use endpoints::blogs::{find_blog, get_blogs, new_blog};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

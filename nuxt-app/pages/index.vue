@@ -8,8 +8,8 @@
         <p>
           hey! my name is jessica, and i'm trans girl from canada. i'm also a
           fullstack developer who works with python, node.js, vue, tailwind,
-          rust and much more. i've been on estrogen since january 19th 2023 and
-          my prefered pronouns are she/her.
+          rust and much more. i've been on estrogen since june 20th 2023 and my
+          prefered pronouns are she/her.
         </p>
       </div>
       <div class="section-small">
