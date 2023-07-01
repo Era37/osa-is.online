@@ -1,0 +1,7 @@
+uvicorn[standard]
+fastapi
+pymongo
+redis
+python-dotenv
+psycopg
+psycopg_pool
