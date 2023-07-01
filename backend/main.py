@@ -1,13 +1,16 @@
-from contextlib import asynccontextmanager
-from datetime import date
 from fastapi import FastAPI
+from utils.database import Database
+from dotenv import load_dotenv
+
 
 app = FastAPI()
 
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    pass
+@app.on_event("startup")
+async def startup():
+    print("asdasd")
+    load_dotenv("./.env")
+    await Database.registerDatabase()
 
 
 @app.get("/")

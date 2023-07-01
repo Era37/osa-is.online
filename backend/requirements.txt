@@ -3,5 +3,5 @@ fastapi
 pymongo
 redis
 python-dotenv
-psycopg
+psycopg[binary]
 psycopg_pool
