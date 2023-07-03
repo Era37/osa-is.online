@@ -9,8 +9,9 @@ router = APIRouter()
 
 
 @router.post("/new")
-async def new_blog(blog: Blog, token: Annotated[str | None, Header()], response: Response):
-    if os.getenv("KEY") != token:
+async def new_blog(blog: Blog, response: Response, Authorization=Header()):
+    print(Authorization, os.getenv("KEY"))
+    if os.getenv("KEY") != Authorization:
         response.status_code = 400
         return {"message": "Invalid Token"}
     blog.date = round(time())
