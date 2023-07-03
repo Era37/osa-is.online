@@ -4,7 +4,7 @@ import { defineNuxtConfig } from "nuxt/config";
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBase: "http://192.168.2.16",
+      apiBase: "https://api.jessica-is.online",
     },
   },
   experimental: {

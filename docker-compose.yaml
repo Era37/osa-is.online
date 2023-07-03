@@ -13,22 +13,18 @@ services:
       - 6300:80
     env_file:
       - .env
-  mongodb:
-    container_name: mongo_portfolio
-    image: mongo
+  postgres:
+    container_name: postgres_portfolio
+    image: postgres
     volumes:
-      - mydb:/data/db
+      - mydb:/var/lib/postgresql
     env_file:
       - .env
-    ports:
-      - 27016:27017
   redisdb:
     container_name: redis_portfolio
     image: redis
     env_file:
       - .env
-    ports:
-      - 6378:6379
     command: >
       --requirepass ${REDIS_PASSWORD}
 
