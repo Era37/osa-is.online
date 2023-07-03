@@ -6,7 +6,6 @@ class Blog(BaseModel):
     url: str
     date: int = None
     content: str
-    description: str
 
     @staticmethod
     def build(blog_list):
@@ -14,7 +13,7 @@ class Blog(BaseModel):
         for blog in blog_list:
             blog_convert = list(blog)
             format_obj = {}
-            blog_order = ["title", "url", "date", "content", "description"]
+            blog_order = ["title", "url", "date", "content"]
             for i in range(len(blog_order)):
                 format_obj[blog_order[i]] = blog_convert[i]
             dict_blogs.append(format_obj)
