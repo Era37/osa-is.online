@@ -4,6 +4,7 @@ import os
 
 EXPIRE = 5
 
+
 class DatabaseAPI:
     @staticmethod
     async def get(table: str, query: dict, key: str):
@@ -12,7 +13,8 @@ class DatabaseAPI:
             async with conn.cursor() as cur:
                 if key:
                     resp = await redis.get(key)
-                    if resp is not None and len(resp) != 0: return eval(resp)
+                    if resp is not None and len(resp) != 0:
+                        return eval(resp)
                 query_format = f"SELECT * FROM {table}"
                 if len(query) != 0:
                     query_format += " WHERE "
@@ -24,7 +26,7 @@ class DatabaseAPI:
                 if key:
                     await redis.set(key, str(result), EXPIRE)
                 return result
-    
+
     @staticmethod
     async def insert(table: str, data: dict, key: str):
         async with Database.pgConn.connection() as conn:
@@ -48,8 +50,6 @@ class DatabaseAPI:
                 if key:
                     await Database.redisConn.set(key, str(data), EXPIRE)
 
-
-            
 
 class Database:
     redisConn = None

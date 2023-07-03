@@ -1,10 +1,11 @@
-from fastapi import APIRouter, Header, status, Response
+from fastapi import APIRouter, Header, Response
 from utils.database import DatabaseAPI
-from utils.objects import Blog, BlogPreview
+from utils.objects import Blog
 from typing import Annotated
 import os
 
 router = APIRouter()
+
 
 @router.post("/new")
 async def new_blog(blog: Blog, token: Annotated[str | None, Header()], response: Response):
@@ -17,9 +18,11 @@ async def new_blog(blog: Blog, token: Annotated[str | None, Header()], response:
         return {"message": err["message"]}
     return {"message": "Success"}
 
+
 @router.get("/blogs")
 async def get_blogs():
     return Blog.build(await DatabaseAPI.get("blogs", {}, "blogs"))
+
 
 @router.get("/blog/{id}")
 async def get_blog(id):
