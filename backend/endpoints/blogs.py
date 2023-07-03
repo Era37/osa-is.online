@@ -3,6 +3,7 @@ from utils.database import DatabaseAPI
 from utils.objects import Blog
 from typing import Annotated
 import os
+from time import time
 
 router = APIRouter()
 
@@ -12,6 +13,7 @@ async def new_blog(blog: Blog, token: Annotated[str | None, Header()], response:
     if os.getenv("KEY") != token:
         response.status_code = 400
         return {"message": "Invalid Token"}
+    blog.date = round(time())
     err = await DatabaseAPI.insert("blogs", vars(blog), blog.url)
     if err:
         response.status_code = err["code"]
@@ -24,7 +26,7 @@ async def get_blogs():
     return Blog.build(await DatabaseAPI.get("blogs", {}, "blogs"))
 
 
-@router.get("/blog/{id}")
+@router.get("/blogs/{id}")
 async def get_blog(id):
     blog = Blog.build(await DatabaseAPI.get("blogs", {"url": id}, id))
     if len(blog) > 0:

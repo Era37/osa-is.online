@@ -6,4 +6,4 @@ router = APIRouter()
 
 @router.get("/spotify")
 async def spotify():
-    return await SpotifyToken.getTracks()
+    return await SpotifyToken.getTracks(5)

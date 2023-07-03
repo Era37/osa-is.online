@@ -4,7 +4,7 @@ from pydantic import BaseModel
 class Blog(BaseModel):
     title: str
     url: str
-    date: int
+    date: int = None
     content: str
     description: str
 

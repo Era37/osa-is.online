@@ -1,18 +1,28 @@
 <template>
-  <div class="flex flex-col section">
+  <div class="flex flex-col section" v-if="!hidden">
     <div class="center-x padding flex flex-col">
       <div class="max-w">
         <p class="title title-box">
           i'm <span class="pink-underline">jessica</span>
         </p>
         <p>
-          hey! my name is jessica, and i'm trans girl from canada. i'm also a
-          fullstack developer who works with python, node.js, vue, tailwind,
-          rust and much more. i've been on estrogen since june 20th 2023 and my
-          prefered pronouns are she/her.
+          hey! my name is jessica, and i'm transfemme boymoder from ontario
+          canada. i'm also a fullstack developer who works with python, node.js,
+          vue, tailwind, rust, C and much more. i've been on estrogen since june
+          20th 2023 and my prefered pronouns are she/her.
         </p>
       </div>
       <div class="section-small">
+        <span class="bold">my music:</span>
+        <div class="article-offset flex flex-col">
+          <Songs
+            v-if="songs.length"
+            v-for="song in songs"
+            :url="song.url"
+            :name="song.name"
+            :artists="song.artists"
+          />
+        </div>
         <span class="bold">my articles:</span>
         <div class="article-offset flex flex-col">
           <Article
@@ -26,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="w-screen">
+      <div class="flex">
         <div class="center-x flex-wrap flex">
           <SocialMedia
             class="space-x"
@@ -68,18 +78,33 @@ interface BlogPreview {
   url: string;
 }
 
+interface Song {
+  url: string;
+  artists: string;
+  name: string;
+}
+
 export default {
   async created() {
-    // @ts-expect-error
-    const config = useRuntimeConfig();
-    const apiURL = config.public.apiBase;
-    (await (await fetch(apiURL + "/blogs")).json()).forEach((blog: any) => {
-      this.articles.push(blog);
-    });
+    await this.getApiObjects("/blogs", "articles");
+    await this.getApiObjects("/spotify", "songs");
+    this.hidden = false;
+  },
+  methods: {
+    async getApiObjects(endpoint: string, arrayIndex: string) {
+      // @ts-ignore
+      const url = useRuntimeConfig().public.apiBase;
+      (await (await fetch(url + endpoint)).json()).forEach((blog: any) => {
+        // @ts-ignore
+        this[arrayIndex].push(blog);
+      });
+    },
   },
   data() {
     return {
+      hidden: true,
       articles: [] as BlogPreview[],
+      songs: [] as Song[],
       social_media: [
         {
           name: "discord",

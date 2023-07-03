@@ -7,12 +7,12 @@ from typing import List
 
 class Track:
     name: str
-    author: str
+    artists: str
     url: str
 
-    def __init__(self, name, author, url):
+    def __init__(self, name, artists, url):
         self.name = name
-        self.author = author
+        self.artists = artists
         self.url = url
 
 
@@ -36,7 +36,7 @@ class SpotifyToken:
             SpotifyToken.bearer = response_json["access_token"]
 
     @staticmethod
-    async def getTracks() -> List[Track]:
+    async def getTracks(items: int) -> List[Track]:
         if time.time() >= SpotifyToken.expire:
             await SpotifyToken.genToken()
         async with httpx.AsyncClient() as client:
@@ -50,5 +50,5 @@ class SpotifyToken:
                     artists += f"{artist['name']}, "
                 artists = artists[:-2]
                 tracks.append(
-                    Track(track_indexed["name"], artists, track_indexed["href"]))
-            return tracks
+                    Track(track_indexed["name"], artists, track_indexed["external_urls"]["spotify"]))
+            return tracks[-items:]
