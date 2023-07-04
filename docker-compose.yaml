@@ -17,7 +17,7 @@ services:
     container_name: postgres_portfolio
     image: postgres
     volumes:
-      - mydb:/var/lib/postgresql
+      - mydb:/var/lib/postgresql/data
     env_file:
       - .env
   redisdb:

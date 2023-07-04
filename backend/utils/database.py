@@ -2,7 +2,7 @@ from redis.asyncio import ConnectionPool, Redis
 import psycopg_pool
 import os
 
-EXPIRE = 5
+EXPIRE = 300
 
 
 class DatabaseAPI:
