@@ -2,6 +2,7 @@
 from os import getenv as ge
 import httpx
 import time
+from utils.database import Database, EXPIRE
 from typing import List
 
 
@@ -19,6 +20,13 @@ class Track:
 class SpotifyToken:
     bearer = None
     expire = 0
+
+    @staticmethod
+    async def cache(k: str, tracks: List[Track]):
+        dict_tracks = []
+        for track in tracks:
+            dict_tracks.append(vars(track))
+        await Database.redisConn.set(k, str(dict_tracks), EXPIRE)
 
     @staticmethod
     async def genToken():
@@ -40,6 +48,10 @@ class SpotifyToken:
         if time.time() >= SpotifyToken.expire:
             await SpotifyToken.genToken()
         async with httpx.AsyncClient() as client:
+            redis_data = await Database.redisConn.get("tracks")
+            if redis_data:
+                converted_list = eval(redis_data)
+                return converted_list[-items:]
             response = await client.get("https://api.spotify.com/v1/playlists/6onj45lQm8DiLFT8nQQCOj/tracks", headers={"Authorization": f"Bearer {SpotifyToken.bearer}"})
             response_json = response.json()
             tracks = []
@@ -51,4 +63,5 @@ class SpotifyToken:
                 artists = artists[:-2]
                 tracks.append(
                     Track(track_indexed["name"], artists, track_indexed["external_urls"]["spotify"]))
+            await SpotifyToken.cache("tracks", tracks[-items:])
             return tracks[-items:]
