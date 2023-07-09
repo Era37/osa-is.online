@@ -108,12 +108,12 @@ export default {
       social_media: [
         {
           name: "discord",
-          link: "https://discordhub.com/profile/768615938055471116",
+          link: "https://discordlookup.com/user/496432681614180382",
           hex: "#5865f2",
         },
         {
           name: "reddit",
-          link: "https://www.reddit.com/user/Era3037",
+          link: "https://www.reddit.com/user/Era_3037",
           hex: "#ff4500",
         },
         {
