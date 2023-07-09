@@ -126,11 +126,6 @@ export default {
           link: "https://open.spotify.com/user/vvknrxqpb2g7ql3dx3l6m09ro",
           hex: "#1ed760",
         },
-        {
-          name: "mastodon",
-          link: "https://mastodon.social/@era3037",
-          hex: "#605eee",
-        },
       ],
     };
   },
