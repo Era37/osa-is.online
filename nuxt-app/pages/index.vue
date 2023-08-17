@@ -5,12 +5,7 @@
         <p class="title title-box">
           i'm <span class="pink-underline">jessica</span>
         </p>
-        <p>
-          hey! my name is jessica, and i'm transfemme boymoder from ontario
-          canada. i'm also a fullstack developer who works with python, node.js,
-          vue, tailwind, rust, C and much more. i've been on estrogen since june
-          20th 2023 and my prefered pronouns are she/her.
-        </p>
+        <p v-text="about"></p>
       </div>
       <div class="section-small">
         <span class="bold">my music:</span>
@@ -73,6 +68,8 @@ $salmon: #ff7391;
 </style>
 
 <script lang="ts">
+import { defineComponent } from "vue";
+
 interface BlogPreview {
   title: string;
   url: string;
@@ -84,7 +81,7 @@ interface Song {
   name: string;
 }
 
-export default {
+export default defineComponent({
   async created() {
     await this.getApiObjects("/blogs", "articles");
     await this.getApiObjects("/spotify", "songs");
@@ -102,6 +99,7 @@ export default {
   },
   data() {
     return {
+	  about: "hey! my name is jessica, and i'm transfemme boymoder from ontario\ncanada. i'm also a fullstack developer who works with python, node.js,\nvue, tailwind, rust, c(++) and much more. i've been on estrogen since june\n20th 2023 and my prefered pronouns are she/her.",
       hidden: true,
       articles: [] as BlogPreview[],
       songs: [] as Song[],
@@ -127,7 +125,7 @@ export default {
           hex: "#1ed760",
         },
       ],
-    };
+    } as any;
   },
-};
+});
 </script>
