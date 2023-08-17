@@ -108,7 +108,7 @@ export default {
       social_media: [
         {
           name: "discord",
-          link: "https://discordlookup.com/user/496432681614180382",
+          link: "https://discord.com/users/496432681614180382",
           hex: "#5865f2",
         },
         {
