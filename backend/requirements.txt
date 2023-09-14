@@ -1,8 +1,0 @@
-uvicorn[standard]
-fastapi
-pymongo
-redis
-python-dotenv
-psycopg[binary]
-psycopg_pool
-httpx
