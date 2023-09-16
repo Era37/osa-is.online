@@ -97,5 +97,6 @@ func GetSongs() *Tracks {
 			tracks,
 			item.(map[string]interface{})["track"].(map[string]interface{}))
 	}
-	return &tracks
+	tracksSliced := tracks[:5]
+	return &tracksSliced
 }

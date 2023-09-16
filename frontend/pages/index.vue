@@ -99,7 +99,8 @@ export default defineComponent({
   },
   data() {
     return {
-	  about: "hey! my name is jessica, and i'm transfemme boymoder from ontario\ncanada. i'm also a fullstack developer who works with python, node.js,\nvue, tailwind, rust, c(++) and much more. i've been on estrogen since june\n20th 2023 and my prefered pronouns are she/her.",
+      about:
+        "hey! my name is jessica, and i'm transfemme boymoder from ontario\ncanada. i'm also a fullstack developer who works with python, node.js,\nvue, tailwind, rust, c(++) and much more. i've been on estrogen since june\n20th 2023 and my prefered pronouns are she/her.",
       hidden: true,
       articles: [] as BlogPreview[],
       songs: [] as Song[],
