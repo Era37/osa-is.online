@@ -12,11 +12,16 @@ import (
 	"jessica-is.online/backend/utils"
 )
 
-var endpoints_array = []map[string]interface{} {{"path": "/blogs", "func": endpoints.Blogs}}
+var endpoints_array = []map[string]interface{} {
+	{"path": "/blogs", "func": endpoints.Blogs},
+	{"path": "/blog/{id}", "func": endpoints.Blog},
+	{"path": "/new", "func": endpoints.NewBlog},
+}
 
 func main() {
 	env_err := godotenv.Load()
 	r := mux.NewRouter()
+	r.Use(utils.MiddlewareHandler)
 	if env_err != nil {
 		log.Fatal(env_err)
 	}

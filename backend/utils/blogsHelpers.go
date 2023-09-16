@@ -15,18 +15,56 @@ type Blog struct {
 	Url string `json:"url"`
 }
 
-func GetBlogs(db *Database) []byte {
-	var blogs []Blog
-	pg, redis := db.Pg, db.Redis
-	val, err := redis.Get(context.Background(), "blogs").Result()
+func NewBlog(blog Blog) {
+	DB.Pg.Query(
+		`INSERT INTO blogs(date, title, url, content) VALUES($1, $2, $3, $4);`,
+		blog.Date,
+		blog.Title,
+		blog.Url,
+		blog.Content,
+	)
+}
+
+func GetBlog(id string) []byte {
+	var blog Blog
+	pg, redis := DB.Pg, DB.Redis
+	redis_res, err := redis.Get(context.Background(), "id").Result()
 	if err == nil {
-		return []byte(val)
-	}
-	rows, err := pg.Query("SELECT * FROM blogs")
+		return []byte(redis_res)
+	} 
+	rows, err := pg.Query("SELECT * FROM blogs WHERE url = $1", id)
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
+	defer rows.Close()
+	rows.Next()
+	err = rows.Scan(&blog.Date, &blog.Title, &blog.Url, &blog.Content)
+	if err != nil {
+		return nil
+	}
+	jsonData, err := json.Marshal(blog)
+	redis.Set(context.Background(), id, string(jsonData), duration)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	return jsonData
+}
+
+func GetBlogs() []byte {
+	var blogs []Blog
+	pg, redis := DB.Pg, DB.Redis
+	val, err := redis.Get(context.Background(), "blogs").Result()
+	if err == nil {
+		return []byte(val)
+	}
+	rows, err := pg.Query("SELECT * FROM blogs;")
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	defer rows.Close()
 	for rows.Next() {
 		var blog Blog
 		err := rows.Scan(&blog.Date, &blog.Title, &blog.Url, &blog.Content)
@@ -39,7 +77,6 @@ func GetBlogs(db *Database) []byte {
 		return nil
 	}
 	jsonData, err := json.Marshal(blogs)
-	fmt.Println(string(jsonData), err, blogs)
 	if err != nil {
 		fmt.Println(err);
 		return nil
