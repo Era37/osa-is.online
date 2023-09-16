@@ -12,10 +12,11 @@ import (
 	"jessica-is.online/backend/utils"
 )
 
-var endpoints_array = []map[string]interface{} {
+var endpoints_array = []map[string]interface{}{
 	{"path": "/blogs", "func": endpoints.Blogs},
 	{"path": "/blog/{id}", "func": endpoints.Blog},
 	{"path": "/new", "func": endpoints.NewBlog},
+	{"path": "/spotify", "func": endpoints.Spotify},
 }
 
 func main() {
@@ -36,4 +37,3 @@ func main() {
 	http.Handle("/", r)
 	http.ListenAndServe("0.0.0.0:80", nil)
 }
-
