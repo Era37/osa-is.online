@@ -1,33 +1,34 @@
 package main
 
 import (
-	//"database/sql"
-
 	"fmt"
+	"log"
 	"net/http"
 
+	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
+
+	"jessica-is.online/backend/endpoints"
 	"jessica-is.online/backend/utils"
 )
-var db utils.Database
 
-func home(w http.ResponseWriter, r *http.Request) {
-	rows, err := db.Pg.Query("SELECT * FROM blogs")
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	for rows.Next() {
-		
-	}
-	fmt.Fprintf(w, "hello :3")
-}
+var endpoints_array = []map[string]interface{} {{"path": "/blogs", "func": endpoints.Blogs}}
 
 func main() {
-	http.HandleFunc("/", home)
-	fmt.Println("Online")
-	db = utils.Connect()
-	err := http.ListenAndServe("0.0.0.0:80", nil)
-	if err != nil {
-		fmt.Println(err)
+	env_err := godotenv.Load()
+	r := mux.NewRouter()
+	if env_err != nil {
+		log.Fatal(env_err)
 	}
+	utils.Connect()
+	for _, endpoint_entry := range endpoints_array {
+		call_path := endpoint_entry["path"].(string)
+		call_func := endpoint_entry["func"].(func(http.ResponseWriter, *http.Request))
+		r.HandleFunc(call_path, call_func)
+	}
+	utils.InitDatabase(&utils.DB)
+	fmt.Println("Online")
+	http.Handle("/", r)
+	http.ListenAndServe("0.0.0.0:80", nil)
 }
+
