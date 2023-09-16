@@ -59,7 +59,7 @@ func GetBlogs() []byte {
 	if err == nil {
 		return []byte(val)
 	}
-	rows, err := pg.Query("SELECT * FROM blogs;")
+	rows, err := pg.Query("SELECT date, title, url, content FROM blogs;")
 	if err != nil {
 		fmt.Println(err)
 		return nil
