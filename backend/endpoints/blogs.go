@@ -2,7 +2,6 @@ package endpoints
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"os"
 
@@ -42,6 +41,5 @@ func Blog(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
 	res := utils.GetBlog(id)
-	fmt.Println(res)
 	w.Write(clean(res))
 }
