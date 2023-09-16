@@ -58,7 +58,7 @@ export default {
       return blog.replaceAll("\n", "<br>");
     },
     findTime(time: number): string {
-      const date = new Date(time);
+      const date = new Date(time * 1000);
       const months: Array<string> = [
         "Janurary",
         "Feburary",

@@ -6,19 +6,20 @@ import (
 	"fmt"
 	"time"
 )
+
 var duration = 300 * time.Second
 
 type Blog struct {
-	Title string `json:"title"`
-	Date int `json:"date"`
+	Title   string `json:"title"`
+	Date    int    `json:"date"`
 	Content string `json:"content"`
-	Url string `json:"url"`
+	Url     string `json:"url"`
 }
 
 func NewBlog(blog Blog) {
 	DB.Pg.Query(
 		`INSERT INTO blogs(date, title, url, content) VALUES($1, $2, $3, $4);`,
-		blog.Date,
+		time.Now().Unix(),
 		blog.Title,
 		blog.Url,
 		blog.Content,
@@ -31,7 +32,7 @@ func GetBlog(id string) []byte {
 	redis_res, err := redis.Get(context.Background(), "id").Result()
 	if err == nil {
 		return []byte(redis_res)
-	} 
+	}
 	rows, err := pg.Query("SELECT * FROM blogs WHERE url = $1", id)
 	if err != nil {
 		fmt.Println(err)
@@ -78,7 +79,7 @@ func GetBlogs() []byte {
 	}
 	jsonData, err := json.Marshal(blogs)
 	if err != nil {
-		fmt.Println(err);
+		fmt.Println(err)
 		return nil
 	}
 	redis.Set(context.Background(), "blogs", jsonData, duration)
