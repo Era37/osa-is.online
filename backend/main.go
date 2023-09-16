@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
@@ -20,6 +21,7 @@ var endpoints_array = []map[string]interface{}{
 }
 
 func main() {
+	time.Sleep(8 * time.Second)
 	env_err := godotenv.Load()
 	r := mux.NewRouter()
 	r.Use(utils.MiddlewareHandler)

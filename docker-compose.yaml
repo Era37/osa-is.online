@@ -14,7 +14,7 @@ services:
     env_file:
       - .env
   postgres:
-    container_name: postgres_portfolio
+    container_name: portfolio_postgres
     image: postgres
     volumes:
       - mydb:/var/lib/postgresql/data
@@ -23,7 +23,7 @@ services:
     ports:
       - "5432:5432"
   redisdb:
-    container_name: redis_portfolio
+    container_name: portfolio_redis
     image: redis
     env_file:
       - .env
