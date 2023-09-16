@@ -7,10 +7,19 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
+
+	"github.com/tidwall/gjson"
 )
 
 type Tracks []map[string]interface{}
+
+type SpotifyTracksResponse struct {
+	Artists string `json:"artists"`
+	Url     string `json:"url"`
+	Name    string `json:"name"`
+}
 
 type SpotifyTokenResponse struct {
 	Access_token string `json:"access_token"`
@@ -57,12 +66,11 @@ func tokenGenerate() *string {
 	return &values.Access_token
 }
 
-func GetSongs() *Tracks {
+func GetSongs() *[]SpotifyTracksResponse {
 	token := tokenGenerate()
 	if token == nil {
 		return nil
 	}
-	fmt.Println(*token)
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", playlist, nil)
 	if err != nil {
@@ -84,18 +92,20 @@ func GetSongs() *Tracks {
 		return nil
 	}
 
-	var data map[string]interface{}
-	err = json.Unmarshal(body, &data)
-	if err != nil {
-		fmt.Println("Error parsing JSON:", err)
-		return nil
-	}
-
-	var tracks Tracks
-	for _, item := range data["items"].([]interface{}) {
-		tracks = append(
-			tracks,
-			item.(map[string]interface{})["track"].(map[string]interface{}))
+	items := gjson.Get(string(body), "items").Array()
+	var tracks []SpotifyTracksResponse
+	for _, item := range items {
+		var track SpotifyTracksResponse
+		trackIndex := gjson.Get(item.String(), "track").String()
+		artists := gjson.Get(trackIndex, "artists").Array()
+		for _, artist := range artists {
+			track.Artists += fmt.Sprintf("%s, ", gjson.Get(artist.String(), "name").String())
+		}
+		track.Artists = strings.TrimSuffix(track.Artists, ", ")
+		var name, url = gjson.Get(trackIndex, "name").String(), gjson.Get(trackIndex, "external_urls.spotify").String()
+		track.Name = name
+		track.Url = url
+		tracks = append(tracks, track)
 	}
 	tracksSliced := tracks[:5]
 	return &tracksSliced

@@ -14,6 +14,7 @@ func Spotify(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("An Error Occured while getting songs")
 		return
 	}
+	fmt.Println((*res)[0].Artists)
 	bytes, err := json.Marshal(res)
 	if err != nil {
 		fmt.Println(err)

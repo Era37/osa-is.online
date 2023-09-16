@@ -15,13 +15,13 @@ import (
 
 var endpoints_array = []map[string]interface{}{
 	{"path": "/blogs", "func": endpoints.Blogs},
-	{"path": "/blog/{id}", "func": endpoints.Blog},
+	{"path": "/blogs/{id}", "func": endpoints.Blog},
 	{"path": "/new", "func": endpoints.NewBlog},
 	{"path": "/spotify", "func": endpoints.Spotify},
 }
 
 func main() {
-	time.Sleep(8 * time.Second)
+	time.Sleep(4 * time.Second)
 	env_err := godotenv.Load()
 	r := mux.NewRouter()
 	r.Use(utils.MiddlewareHandler)
