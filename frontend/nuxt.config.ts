@@ -4,7 +4,7 @@ import { defineNuxtConfig } from "nuxt/config";
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBase: "https://jessica-is.gay",
+      apiBase: "https://api.jessica-is.gay",
     },
   },
   experimental: {
