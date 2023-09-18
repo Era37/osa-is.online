@@ -1,4 +1,4 @@
-module jessica-is.online/backend
+module osa-is.online/backend
 
 go 1.20
 

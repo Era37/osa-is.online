@@ -9,8 +9,8 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 
-	"jessica-is.online/backend/endpoints"
-	"jessica-is.online/backend/utils"
+	"osa-is.online/backend/endpoints"
+	"osa-is.online/backend/utils"
 )
 
 var endpoints_array = []map[string]interface{}{

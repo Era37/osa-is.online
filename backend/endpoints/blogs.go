@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
-	"jessica-is.online/backend/utils"
+	"osa-is.online/backend/utils"
 )
 
 func clean(bytes []byte) []byte {

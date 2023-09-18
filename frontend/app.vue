@@ -40,24 +40,20 @@ a {
 
 <script setup>
 useHead({
-  title: "jessica",
+  title: "Osa",
   meta: [
     {
-      property: "og:image",
-      content: "https://avatar.jessica-is.gay/496432681614180382",
-    },
-    {
       property: "og:title",
-      content: "Jessica",
+      content: "Osa",
     },
     {
       property: "og:description",
-      content: "Another trans catgirl on the internet",
+      content: "Developer, Server maintainer and F1 Fan.",
     },
     {
       hid: "description",
       name: "description",
-      content: "Another trans catgirl on the internet",
+      content: "Developer, Server maintainer and F1 Fan.",
     },
     {
       property: "theme-color",

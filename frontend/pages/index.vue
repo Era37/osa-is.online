@@ -3,7 +3,7 @@
     <div class="center-x padding flex flex-col">
       <div class="max-w">
         <p class="title title-box">
-          i'm <span class="pink-underline">jessica</span>
+          i'm <span class="pink-underline">Osa</span>
         </p>
         <p v-text="about"></p>
       </div>
@@ -100,7 +100,7 @@ export default defineComponent({
   data() {
     return {
       about:
-        "hey! my name is jessica, and i'm transfemme boymoder from ontario\ncanada. i'm also a fullstack developer who works with python, node.js,\nvue, tailwind, rust, c(++) and much more. i've been on estrogen since june\n20th 2023 and my prefered pronouns are she/her.",
+        "My name is Osa, and I'm a transfeminine student from ontario canada. I hobby as a fullstack developer who works with Python, Node.js,\nVue, Tailwind, Rust, C(++) and much more. If you wish to contact me the best way would be using my discord as provided below. My prefered pronouns are she/her.",
       hidden: true,
       articles: [] as BlogPreview[],
       songs: [] as Song[],

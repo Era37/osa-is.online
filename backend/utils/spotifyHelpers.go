@@ -107,6 +107,6 @@ func GetSongs() *[]SpotifyTracksResponse {
 		track.Url = url
 		tracks = append(tracks, track)
 	}
-	tracksSliced := tracks[:5]
+	tracksSliced := tracks[len(tracks)-5:]
 	return &tracksSliced
 }
