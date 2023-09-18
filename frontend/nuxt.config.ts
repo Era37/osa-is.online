@@ -4,7 +4,7 @@ import { defineNuxtConfig } from "nuxt/config";
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBase: "https://osa-is.online",
+      apiBase: "https://api.osa-is.online",
     },
   },
   experimental: {
