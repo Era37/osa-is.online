@@ -1,13 +1,10 @@
+version: "3.8"
 services:
-  web:
+  website:
     build: .
-    depends_on:
-      db:
-        condition: service_healthy
-        restart: true
-      redis:
-        condition: service_started
-  redis:
-    image: redis
-  db:
-    image: postgres
+    container_name: portfolio
+    env_file:
+      - .env
+    ports:
+      - 6333:3000
+    restart: unless-stopped

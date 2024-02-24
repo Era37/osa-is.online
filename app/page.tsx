@@ -16,7 +16,9 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [emailContent, setEmailContent] = useState("");
   async function getBlogs() {
-    setBlogs(await (await fetch("/api/blogs")).json());
+    const response = await (await fetch("/api/blogs")).json();
+    console.log(response);
+    setBlogs(response);
   }
   useEffect(() => {
     getBlogs();
@@ -41,11 +43,12 @@ export default function Home() {
         {blogs.length ? (
           <>
             <Subhead>Blogs</Subhead>
-            {blogs.map(({ title, description, id, created }) => (
+            {blogs.map(({ title, description, id, created }, i) => (
               <Blog
+                key={i}
                 title={title}
                 description={description}
-                date={created}
+                date={new Date(created)}
                 id={id}
               />
             ))}
