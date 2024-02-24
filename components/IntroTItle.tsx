@@ -8,8 +8,8 @@ export default function IntroTitle({ className }: { className?: string }) {
       <span className="inline-flex relative">
         Osa{" "}
         <div className="absolute flex">
-          {loopArray.map(() => (
-            <Triangle />
+          {loopArray.map((_, i) => (
+            <Triangle key={i} />
           ))}
         </div>
       </span>

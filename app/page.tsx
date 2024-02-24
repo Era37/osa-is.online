@@ -1,12 +1,26 @@
+"use client";
+
 import Blog from "@/components/Blog";
+import InputBox from "@/components/InputBox";
+import IntroTitle from "@/components/IntroTitle";
 import Button from "@/components/Button";
-import IntroTitle from "@/components/IntroTItle";
-import Project from "@/components/Project";
 import SocialAccounts from "@/components/SocialAccounts";
 import Subhead from "@/components/Subhead";
+import TextArea from "@/components/TextArea";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { blogs } from "@prisma/client";
 
 export default function Home() {
+  const [blogs, setBlogs] = useState([] as blogs[]);
+  const [email, setEmail] = useState("");
+  const [emailContent, setEmailContent] = useState("");
+  async function getBlogs() {
+    setBlogs(await (await fetch("/api/blogs")).json());
+  }
+  useEffect(() => {
+    getBlogs();
+  }, []);
   return (
     <main className="min-h-screen flex flex-col">
       <div className="max-w-[40rem] mx-auto flex flex-col">
@@ -23,22 +37,39 @@ export default function Home() {
             Github
           </Link>
         </div>
-        <Subhead>Blogs</Subhead>
-        <Blog
-          title="test"
-          description="this is a test meow meow meow I like women asdkfjnsd"
-          date={new Date(Date.now())}
-        />
+
+        {blogs.length ? (
+          <>
+            <Subhead>Blogs</Subhead>
+            {blogs.map(({ title, description, id, created }) => (
+              <Blog
+                title={title}
+                description={description}
+                date={created}
+                id={id}
+              />
+            ))}
+          </>
+        ) : (
+          <></>
+        )}
         <Subhead>Contact</Subhead>
-        <div className="mt-4 mb-24 flex space-x-4">
-          <Button className="bg-white text-black" href="test">
-            Discord
-          </Button>
+        <p className="pt-2">Send me an email!</p>
+        <div className="mt-2 mb-24 flex flex-col w-64">
+          <InputBox setter={setEmail} placeholder="your_email@example.com" />
+          <TextArea placeholder="Your message here!" setter={setEmailContent} />
           <Button
-            className="border-2 border-[#202020]"
-            href="mailto:osalorenzo@gmail.com"
+            onClick={() => {
+              fetch("/api/email", {
+                method: "POST",
+                body: JSON.stringify({ email, content: emailContent }),
+              });
+              window.location.reload();
+            }}
+            theme="light"
+            className="mt-4"
           >
-            Email
+            Send Email
           </Button>
         </div>
       </div>
