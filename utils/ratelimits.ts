@@ -9,7 +9,6 @@ const ratelimit = {
 
 export function isRatelimited(ip: string): boolean {
   const requested = requestCount.get(ip) || { lastRequest: now(), count: 0 };
-  console.log(requested.count);
   if (
     requested.count >= ratelimit.requests &&
     now() - requested.lastRequest < ratelimit.per

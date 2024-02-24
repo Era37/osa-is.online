@@ -17,7 +17,6 @@ export default function Home() {
   const [emailContent, setEmailContent] = useState("");
   async function getBlogs() {
     const response = await (await fetch("/api/blogs")).json();
-    console.log(response);
     setBlogs(response);
   }
   useEffect(() => {

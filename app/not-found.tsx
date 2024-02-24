@@ -10,12 +10,10 @@ export default function Custom404() {
   async function removeWord() {
     for (const letter of text) {
       await sleep(150);
-      console.log(text.length);
       setText((prev) => prev.slice(0, -1));
     }
   }
   async function writeWord(word: string) {
-    console.log(word);
     for (const letter of word) {
       setText((prev) => prev + letter);
       await sleep(150);
@@ -26,7 +24,6 @@ export default function Custom404() {
       await sleep(2000);
       await removeWord();
       await sleep(1000);
-      console.log("sfskldmfs");
       await writeWord("Not Found :(");
       await sleep(3000);
       window.location.href = "/";
