@@ -23,7 +23,7 @@ export default function Home() {
     getBlogs();
   }, []);
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen flex flex-col px-4">
       <div className="max-w-[40rem] mx-auto flex flex-col">
         <IntroTitle className="mt-24 mx-auto" />
         <div className="mt-6 text-lg tracking-wide">
@@ -55,24 +55,29 @@ export default function Home() {
         ) : (
           <></>
         )}
-        <Subhead>Contact</Subhead>
-        <p className="pt-2">Send me an email!</p>
-        <div className="mt-2 mb-24 flex flex-col w-64">
-          <InputBox setter={setEmail} placeholder="your_email@example.com" />
-          <TextArea placeholder="Your message here!" setter={setEmailContent} />
-          <Button
-            onClick={() => {
-              fetch("/api/email", {
-                method: "POST",
-                body: JSON.stringify({ email, content: emailContent }),
-              });
-              window.location.reload();
-            }}
-            theme="light"
-            className="mt-4"
-          >
-            Send Email
-          </Button>
+        <div className="flex flex-col xs:mx-0 mx-auto">
+          <Subhead>Contact</Subhead>
+          <p className="pt-2">Send me an email!</p>
+          <div className="mt-2 mb-24 flex flex-col w-64">
+            <InputBox setter={setEmail} placeholder="your_email@example.com" />
+            <TextArea
+              placeholder="Your message here!"
+              setter={setEmailContent}
+            />
+            <Button
+              onClick={() => {
+                fetch("/api/email", {
+                  method: "POST",
+                  body: JSON.stringify({ email, content: emailContent }),
+                });
+                window.location.reload();
+              }}
+              theme="light"
+              className="mt-4"
+            >
+              Send Email
+            </Button>
+          </div>
         </div>
       </div>
       <SocialAccounts />

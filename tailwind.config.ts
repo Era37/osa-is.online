@@ -17,6 +17,9 @@ const config: Config = {
         xiana: "#63C2CA",
         tifi: "#7e22ce",
       },
+      screens: {
+        xs: "400px",
+      },
     },
   },
   plugins: [],
