@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   website:
+    network_mode: "host"
     build: .
     container_name: portfolio
     env_file:
