@@ -6,5 +6,3 @@ services:
       - .env
     ports:
       - 6333:3000
-  build:
-    network: host
