@@ -7,6 +7,7 @@ import Button from "@/components/Button";
 import SocialAccounts from "@/components/SocialAccounts";
 import Subhead from "@/components/Subhead";
 import TextArea from "@/components/TextArea";
+import name from "@/scss/name.module.scss";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { blogs } from "@prisma/client";
@@ -73,7 +74,7 @@ export default function Home() {
                 window.location.reload();
               }}
               theme="light"
-              className="mt-4"
+              className={`mt-4 text-lg font-bold ${name["email-button"]}`}
             >
               Send Email
             </Button>
