@@ -1,13 +1,20 @@
 "use client";
 
 import textAnimate from "@/scss/text-animate.module.scss";
+import name from "@/scss/name.module.scss";
 import { useEffect, useState } from "react";
 import { sleep } from "@/utilities/async";
+import Header from "@/components/Header";
+import Link from "next/link";
 
 export default function Home() {
   const [phrase, setPhrase] = useState("");
 
-  const phrases = ["JavaScript Developer", "Backend Nerd"];
+  const phrases = [
+    "TypeScript Developer",
+    "Self hosting lover",
+    "Low level enjoyer",
+  ];
   function addRemoveClass(addClass: string, removeClass: string) {
     const elementList = (
       document.getElementById("textHighlight") as HTMLElement
@@ -28,24 +35,39 @@ export default function Home() {
       phraseShift();
       await sleep(3000);
       addRemoveClass("text-animate-reverse", "text-animate");
-      await sleep(250);
+      await sleep(400);
     }
   };
   useEffect(() => {
     phraseUpdate();
   }, []);
-  // text-transparent bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text
   return (
-    <div className="min-h-screen flex text-white bg-[#181818]">
-      <div className="m-auto h-[50vh] font-bold text-6xl">
-        <div className="text-slate-300 text-center">hi, I'm a</div>
-        <p
-          id="textHighlight"
-          className={`text-center ${textAnimate["text-gradient"]}`}
-        >
-          {phrase}
-        </p>
+    <>
+      <Header />
+      <div className="min-h-screen flex text-white bg-black">
+        <div className="m-auto flex flex-col">
+          <div className="font-bold text-6xl">
+            <div className="text-slate-300 text-center">hi, I'm a</div>
+            <p
+              id="textHighlight"
+              className={`text-center ${name["solid-gradient"]} h-16 ${textAnimate["text-gradient"]}`}
+            >
+              {phrase}
+            </p>
+          </div>
+          <p className="mt-10 mx-auto text-center text-lg max-w-[30rem]">
+            Hey, my name is <span className={name["solid-gradient"]}>Osa</span>.
+            I'm a fullstack developer from Ontario Canada.
+          </p>
+          <Link
+            href="mailto:osalorenzo@gmail.com"
+            target="_blank"
+            className="mt-14 px-6 py-2 font-bold text-black bg-white transition-all hover:-translate-y-1 rounded-full w-fit mx-auto"
+          >
+            Contact Me
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
