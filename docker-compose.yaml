@@ -1,8 +1,0 @@
-services:
-  website:
-    build: .
-    container_name: portfolio
-    env_file:
-      - .env
-    ports:
-      - 6333:3000

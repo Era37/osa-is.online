@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -6,7 +6,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Osa",
-  description: "My personal portfolio",
+  description: "o.o",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#181818",
 };
 
 export default function RootLayout({

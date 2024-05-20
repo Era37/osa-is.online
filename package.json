@@ -5,29 +5,22 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 6333",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^5.13.0",
-    "@types/nodemailer": "^6.4.14",
-    "@types/request-ip": "^0.0.41",
     "next": "14.2.3",
-    "nodemailer": "^6.9.13",
-    "prisma": "^5.13.0",
     "react": "^18",
     "react-dom": "^18",
-    "request-ip": "^3.3.0",
-    "sass": "^1.75.0",
-    "turbo": "^1.13.3"
+    "sass": "^1.77.2",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "^10.4.19",
     "postcss": "^8",
-    "tailwindcss": "^3.4.3",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }

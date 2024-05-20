@@ -1,87 +1,51 @@
 "use client";
 
-import Blog from "@/components/Blog";
-import InputBox from "@/components/InputBox";
-import IntroTitle from "@/components/IntroTitle";
-import Button from "@/components/Button";
-import SocialAccounts from "@/components/SocialAccounts";
-import Subhead from "@/components/Subhead";
-import TextArea from "@/components/TextArea";
-import name from "@/scss/name.module.scss";
-import Link from "next/link";
+import textAnimate from "@/scss/text-animate.module.scss";
 import { useEffect, useState } from "react";
-import { blogs } from "@prisma/client";
+import { sleep } from "@/utilities/async";
 
 export default function Home() {
-  const [blogs, setBlogs] = useState([] as blogs[]);
-  const [email, setEmail] = useState("");
-  const [emailContent, setEmailContent] = useState("");
-  async function getBlogs() {
-    const response = await (await fetch("/api/blogs")).json();
-    setBlogs(response);
-  }
-  useEffect(() => {
-    getBlogs();
-  }, []);
-  return (
-    <main className="min-h-screen flex flex-col px-4">
-      <div className="max-w-[40rem] mx-auto flex flex-col">
-        <IntroTitle className="mt-24 mx-auto" />
-        <div className="mt-6 text-lg tracking-wide">
-          My name is Osa, and I'm a student from Ontario Canada. I hobby as a
-          fullstack developer who works with Python, Node.js, Vue, Tailwind,
-          Rust, C(++) and much more. To view my projects checkout my{" "}
-          <Link
-            className="font-bold flex"
-            target="_blank"
-            href="https://github.com/era37"
-          >
-            Github
-          </Link>
-        </div>
+  const [phrase, setPhrase] = useState("");
 
-        {blogs.length ? (
-          <>
-            <Subhead>Blogs</Subhead>
-            {blogs.map(({ title, description, id, created }, i) => (
-              <Blog
-                key={i}
-                title={title}
-                description={description}
-                date={new Date(created)}
-                id={id}
-              />
-            ))}
-          </>
-        ) : (
-          <></>
-        )}
-        <div className="flex flex-col xs:mx-0 mx-auto">
-          <Subhead>Contact</Subhead>
-          <p className="pt-2">Send me an email!</p>
-          <div className="mt-2 mb-24 flex flex-col w-64">
-            <InputBox setter={setEmail} placeholder="your_email@example.com" />
-            <TextArea
-              placeholder="Your message here!"
-              setter={setEmailContent}
-            />
-            <Button
-              onClick={() => {
-                fetch("/api/email", {
-                  method: "POST",
-                  body: JSON.stringify({ email, content: emailContent }),
-                });
-                window.location.reload();
-              }}
-              theme="light"
-              className={`mt-4 text-lg font-bold ${name["email-button"]}`}
-            >
-              Send Email
-            </Button>
-          </div>
-        </div>
+  const phrases = ["JavaScript Developer", "Backend Nerd"];
+  function addRemoveClass(addClass: string, removeClass: string) {
+    const elementList = (
+      document.getElementById("textHighlight") as HTMLElement
+    ).classList;
+    elementList.remove(textAnimate[removeClass]);
+    elementList.add(textAnimate[addClass]);
+  }
+
+  function phraseShift() {
+    setPhrase(phrases[0]);
+    phrases.push(phrases[0]);
+    phrases.shift();
+  }
+
+  const phraseUpdate = async () => {
+    while (true) {
+      addRemoveClass("text-animate", "text-animate-reverse");
+      phraseShift();
+      await sleep(3000);
+      addRemoveClass("text-animate-reverse", "text-animate");
+      await sleep(250);
+    }
+  };
+  useEffect(() => {
+    phraseUpdate();
+  }, []);
+  // text-transparent bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text
+  return (
+    <div className="min-h-screen flex text-white bg-[#181818]">
+      <div className="m-auto h-[50vh] font-bold text-6xl">
+        <div className="text-slate-300 text-center">hi, I'm a</div>
+        <p
+          id="textHighlight"
+          className={`text-center ${textAnimate["text-gradient"]}`}
+        >
+          {phrase}
+        </p>
       </div>
-      <SocialAccounts />
-    </main>
+    </div>
   );
 }
