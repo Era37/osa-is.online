@@ -1,0 +1,6 @@
+services:
+  site:
+    build: .
+    container_name: portfolio
+    ports:
+      - 8080:3000

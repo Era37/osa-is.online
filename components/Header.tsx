@@ -12,8 +12,9 @@ export default function Header() {
         osa-is<span className={`${name["stroke-white"]}`}>.online</span>
       </p>
       <div className="ml-auto flex space-x-3 my-auto">
-        {socials.map(({ svg, url }) => (
+        {socials.map(({ svg, url }, i) => (
           <Link
+            key={i}
             target="_blank"
             href={`https://${url}`}
             className="transition-all hover:-translate-y-1"
