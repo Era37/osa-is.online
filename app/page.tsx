@@ -50,12 +50,12 @@ export default function Home() {
             <div className="text-slate-300 text-center">hi, I'm a</div>
             <p
               id="textHighlight"
-              className={`text-center ${name["solid-gradient"]} h-16 ${textAnimate["text-gradient"]}`}
+              className={`text-center ${name["solid-gradient"]} h-20 ${textAnimate["text-gradient"]}`}
             >
               {phrase}
             </p>
           </div>
-          <p className="mt-10 mx-auto text-center text-lg max-w-[30rem]">
+          <p className="mt-2 mx-auto text-center text-lg max-w-[30rem]">
             Hey, my name is <span className={name["solid-gradient"]}>Osa</span>.
             I'm a fullstack developer from Ontario Canada.
           </p>
