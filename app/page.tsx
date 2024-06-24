@@ -44,13 +44,13 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="min-h-screen flex text-white bg-black">
+      <div className="min-h-screen flex text-white bg-black px-4">
         <div className="m-auto flex flex-col">
           <div className="font-bold text-6xl">
             <div className="text-slate-300 text-center">hi, I'm a</div>
             <p
               id="textHighlight"
-              className={`text-center ${name["solid-gradient"]} h-20 ${textAnimate["text-gradient"]}`}
+              className={`text-center ${name["solid-gradient"]} h-32 sm:h-20 ${textAnimate["text-gradient"]}`}
             >
               {phrase}
             </p>
