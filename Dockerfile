@@ -1,4 +1,4 @@
-FROM node:22.3.0
+FROM node:23.0.0
 WORKDIR /app
 COPY . /app
 RUN npm i
