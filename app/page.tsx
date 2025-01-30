@@ -14,6 +14,7 @@ export default function Home() {
     "TypeScript Developer",
     "Self hosting lover",
     "Low level enjoyer",
+    "Twitch Streamer",
   ];
   function addRemoveClass(addClass: string, removeClass: string) {
     const elementList = (
@@ -44,7 +45,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="min-h-screen flex text-white bg-black px-4">
+      <div className="min-h-screen flex text-lg text-white bg-black px-4">
         <div className="m-auto flex flex-col">
           <div className="font-bold text-6xl">
             <div className="text-slate-300 text-center">hi, I'm a</div>
@@ -55,16 +56,18 @@ export default function Home() {
               {phrase}
             </p>
           </div>
-          <p className="mt-2 mx-auto text-center text-lg max-w-[30rem]">
+          <p className="mt-2 mx-auto text-center max-w-[30rem]">
             Hey, my name is <span className={name["solid-gradient"]}>Osa</span>.
-            I'm a fullstack developer from Ontario Canada.
+            I'm a fullstack developer and streamer from Toronto Canada.
           </p>
+
           <Link
-            href="mailto:osalorenzo@gmail.com"
+            href="https://www.twitch.tv/eternalechosofera"
             target="_blank"
-            className="mt-14 px-6 py-2 font-bold text-black bg-white transition-all hover:-translate-y-1 rounded-full w-fit mx-auto"
+            className="mt-4 mx-auto border-solid border-twitch font-bold border-2 flex space-x-2 duration-300 rounded-md px-4 py-2 cursor-pointer hover:bg-purple-900 hover:-translate-y-1 transition-all"
           >
-            Contact Me
+            <img src="/Twitch.png" alt="Twitch Logo" className="h-8" />
+            <p>Check out my streams</p>
           </Link>
         </div>
       </div>
