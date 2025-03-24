@@ -5,7 +5,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 export default function Header() {
   const socials = [
     { svg: "GitHub.svg", url: "github.com/Era37" },
-    { svg: "Bluesky.svg", url: "bsky.app/profile/era3037.bsky.social" },
+    { svg: "Bluesky.svg", url: "bsky.app/profile/osa-is.online" },
   ];
   const strokeThickness = useMediaQuery("(max-width: 640px)")
     ? "stroke-thin"
