@@ -11,7 +11,27 @@ import "./src/styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>Osa</title>
   </head>
-  <body class="text-black">
+  <body class="text-black" oncontextmenu="return false;">
     <slot />
   </body>
 </html>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  document.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === "i") {
+      e.preventDefault();
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+  });
+</script>
