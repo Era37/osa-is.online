@@ -4,10 +4,8 @@ import Header from "../components/Header.astro";
 ---
 
 <Layout>
-  <div class="mt-20 px-6 flex flex-col">
-    <Header /><div
-      class="text-2xl mt-20 w-[70vw] mx-auto flex flex-col font-medium"
-    >
+  <div class="px-6 flex flex-col h-screen">
+    <Header /><div class="text-2xl w-[70vw] m-auto flex flex-col font-medium">
       <img src="/mac.png" alt="" class="h-24 w-fit" />
       <p class="mb-4">Hello! I'm Osa.</p>
       <p class="text-8xl font-black">
@@ -20,9 +18,21 @@ import Header from "../components/Header.astro";
         crafting sleek interfaces or engineering robust backends, I bring
         creativity and precision to everything I make.
       </p>
-      <div class="h-[50vh] mt-40">
-        <p class="text-4xl font-bold underline">About Me</p>
-      </div>
     </div>
+  </div>
+  <div class="mb-40 text-center flex flex-col relative w-fit mx-auto">
+    <p class="mx-auto font-extrabold text-xl tracking-widest">ABOUT ME</p>
+    <p class="mx-auto max-w-[40vw] text-7xl/20 font-extrabold mt-20">
+      Passionate about crafting bold, intuitive digital experiences with a
+      balance of creativity and precision.
+    </p>
+    <img
+      src="/chefskiss.png"
+      class="absolute h-55 -translate-x-full translate-y-1/4"
+    />
+    <img
+      src="/wave.png"
+      class="absolute h-55 left-full top-1/2 -translate-y-1/4"
+    />
   </div>
 </Layout>

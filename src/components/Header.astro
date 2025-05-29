@@ -2,9 +2,12 @@
 const tabs = ["Home", "About", "Contact", "Projects"];
 ---
 
-<div>
+<div class="mt-10 absolute">
+  <div class="fixed h-10 z-10 inset-0 backdrop-blur-md w-screen"></div>
+  <div class="fixed -translate-y-5 blur w-screen h-15 backdrop-blur-md z-20">
+  </div>
   <div
-    class="bg-black p-2 flex text-white w-full md:w-[50vw] rounded-full mx-auto space-x-4 my-box"
+    class="bg-black p-2 flex z-30 text-white w-full md:w-[50vw] rounded-full left-1/2 -translate-x-1/2 space-x-4 my-box fixed"
   >
     <div class="h-5 w-5 rounded-full border-3 border-white my-auto"></div>
     <ul class="flex space-x-6 m-auto pr-6 font-bold">
