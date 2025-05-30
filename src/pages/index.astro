@@ -1,18 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import Project from "../components/Project.astro";
+import Xiana from "../components/Xiana.astro";
 ---
 
 <Layout>
-  <div class="px-6 flex flex-col h-screen">
-    <Header /><div class="text-2xl w-[70vw] m-auto flex flex-col font-medium">
-      <img src="/mac.png" alt="" class="h-24 w-fit" />
+  <div class="md:px-6 px-4 flex flex-col md:h-screen">
+    <Header /><div
+      class="2xl:text-2xl lg:text-xl md:w-[70vw] lg:mt-40 mt-24 m-auto flex flex-col font-medium"
+    >
+      <img src="/mac.png" alt="" class="w-24 md:w-fit md:h-24" />
       <p class="mb-4">Hello! I'm Osa.</p>
-      <p class="text-8xl font-black">
+      <p class="2xl:text-8xl lg:text-6xl text-5xl font-black">
         <span class="text-[#c0c0c0]">Engineering</span> seamless interfaces where
         function meets elegance.
       </p>
-      <p class="my-4 leading-10">
+      <p class="my-4 2xl:leading-10">
         Hey there! 👋 I'm Osa, a developer and designer passionate about
         building thoughtful, visually striking digital experiences. Whether it's
         crafting sleek interfaces or engineering robust backends, I bring
@@ -21,21 +25,73 @@ import Header from "../components/Header.astro";
     </div>
   </div>
   <div
-    class="mb-40 text-center flex flex-col relative w-fit mx-auto"
+    class="lg:mb-40 mb-18 text-center flex flex-col relative w-fit mx-auto"
     id="about"
   >
     <p class="mx-auto font-extrabold text-xl tracking-widest">ABOUT ME</p>
-    <p class="mx-auto max-w-[40vw] text-7xl/20 font-extrabold mt-20">
+    <p
+      class="mx-auto lg:max-w-[40vw] px-4 md:px-0 2xl:text-7xl/20 lg:text-6xl md:text-4xl text-3xl font-extrabold mt-10 lg:mt-20"
+    >
       Passionate about crafting bold, intuitive digital experiences with a
       balance of creativity and precision.
     </p>
     <img
       src="/chefskiss.png"
-      class="absolute h-55 -translate-x-full translate-y-1/4"
+      class="2xl:absolute h-55 hidden -translate-x-full translate-y-1/4"
     />
     <img
       src="/wave.png"
-      class="absolute h-55 left-full top-1/2 -translate-y-1/4"
+      class="2xl:absolute hidden h-55 left-full top-full -translate-y-3/4"
     />
   </div>
+  <div class="flex flex-col my-24 lg:my-44" id="projects">
+    <p class="mx-auto font-extrabold text-xl tracking-widest">MY PROJECTS</p>
+    <div class="mx-auto my-10 flex flex-col">
+      <Project
+        title="Xiana"
+        href="https://xiana.cc"
+        description="Xiana is an open-source platform for fast, elegant file storage and media sharing, built to give developers full control with a clean, intuitive interface."
+        ><Xiana height="75px" /></Project
+      >
+    </div>
+  </div>
+  <div class="flex flex-col px-10 lg:h-[50vh] pb-14" id="contact">
+    <p class="mx-auto font-extrabold text-xl tracking-widest">CONTACT ME</p>
+    <div class="mx-auto">
+      <p class="md:text-6xl text-3xl text-center font-extrabold">
+        Want to reach out?
+      </p>
+      <a href="mailto:osalorenzo@gmail.com">
+        <div
+          class="sm:p-10 p-6 bg-black font-extrabold mb-44 sm:text-3xl text-xl text-white text-center my-4 cursor-pointer transition-all box"
+        >
+          Shoot me an email! 📨
+        </div>
+      </a>
+    </div>
+    <div class="md:pb-8 pb-2 w-full">
+      <div class="rounded-2xl w-full bg-[#dddddd] font-extrabold flex p-6">
+        <div class="flex my-auto w-full space-x-6">
+          <a href="https://github.com/Era37" target="_blank"
+            ><img src="/GitHub.svg" class="h-10" /></a
+          >
+          <a href="https://bsky.app/profile/osa-is.online" target="_blank"
+            ><img src="/Bluesky.svg" class="h-10" /></a
+          >
+          <img src="/Signature.png" class="h-12 ml-auto" />
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .box {
+    border-radius: 75px;
+    transition: border-radius 0.2s ease-in-out;
+  }
+
+  .box:hover {
+    border-radius: 15px;
+  }
+</style>

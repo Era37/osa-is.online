@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
-@theme {
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/inter/900.css";
+
+@import "@fontsource/audiowide/400.css";
+
+:root {
   --font-sans: "Inter", "sans-serif";
+  --font-audiowide: "Audiowide", "sans-serif";
 }
