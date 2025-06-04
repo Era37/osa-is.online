@@ -10,3 +10,5 @@
   --font-sans: "Inter", "sans-serif";
   --font-audiowide: "Audiowide", "sans-serif";
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
+import Header from "../components/Header.tsx";
 import Project from "../components/Project.astro";
 import Xiana from "../components/Xiana.astro";
 ---
 
 <Layout>
   <div class="md:px-6 px-4 flex flex-col">
-    <Header /><div
+    <Header client:load /><div
       class="2xl:text-2xl lg:text-xl md:w-[70vw] lg:mt-40 mt-24 m-auto flex flex-col font-medium"
     >
       <img src="/mac.png" alt="" class="w-24 md:w-fit md:h-24" />
@@ -37,11 +37,11 @@ import Xiana from "../components/Xiana.astro";
     </p>
     <img
       src="/chefskiss.png"
-      class="2xl:absolute h-55 hidden -translate-x-full translate-y-1/4"
+      class="2xl:flex absolute h-55 hidden -translate-x-full translate-y-1/4"
     />
     <img
       src="/wave.png"
-      class="2xl:absolute hidden h-55 left-full top-full -translate-y-3/4"
+      class="2xl:flex absolute hidden h-55 left-full top-full -translate-y-3/4"
     />
   </div>
   <div class="flex flex-col my-24 lg:my-44" id="projects">
@@ -63,7 +63,7 @@ import Xiana from "../components/Xiana.astro";
       </p>
       <a href="mailto:osalorenzo@gmail.com">
         <div
-          class="sm:p-10 p-6 bg-black font-extrabold mb-44 sm:text-3xl text-xl text-white text-center my-4 cursor-pointer transition-all box"
+          class="sm:p-10 p-6 bg-black dark:bg-white dark:text-black font-extrabold mb-44 sm:text-3xl text-xl text-white text-center my-4 cursor-pointer transition-all box"
         >
           Shoot me an email! 📨
         </div>
