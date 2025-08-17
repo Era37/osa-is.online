@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.tsx";
 import Project from "../components/Project.astro";
 import Mirrow from "../components/Mirrow.astro";
+import Xiana from "../components/Xiana.astro";
 ---
 
 <Layout>
@@ -45,16 +46,27 @@ import Mirrow from "../components/Mirrow.astro";
     />
   </div>
   <div class="flex flex-col my-24 lg:my-44" id="projects">
-    <p class="mx-auto font-extrabold text-xl tracking-widest mb-4">MY PROJECTS</p>
-    <p class="mx-auto text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl px-4">
-      Here's what I've been working on - projects that showcase my passion for building innovative tools and systems.
+    <p class="mx-auto font-extrabold text-xl tracking-widest mb-4">
+      MY PROJECTS
     </p>
-    <div class="mx-auto my-10 flex flex-col max-w-4xl">
+    <p
+      class="mx-auto text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl px-4"
+    >
+      Here's what I've been working on - projects that showcase my passion for
+      building innovative tools and systems.
+    </p>
+    <div class="mx-auto my-10 flex flex-col max-w-4xl space-y-8">
       <Project
         title="Mirrow"
         href="https://mirrow.app"
         description="Mirrow gives you the tools and runtime to build fast, reliable systems with full control."
         ><Mirrow height="75px" /></Project
+      >
+      <Project
+        title="Xiana"
+        href="https://xiana.cc/"
+        description="Xiana is a simple, self-hosted notes app that keeps your markdown files yours while syncing beautifully across all your devices."
+        ><Xiana height="75px" /></Project
       >
     </div>
   </div>
@@ -65,11 +77,20 @@ import Mirrow from "../components/Mirrow.astro";
         Want to reach out?
       </p>
       <a href="mailto:osalorenzo@gmail.com">
-        <div class="email-button group relative overflow-hidden sm:p-10 p-6 bg-black dark:bg-white dark:text-black font-extrabold mb-44 sm:text-3xl text-xl text-white text-center my-4 cursor-pointer transition-all duration-300">
-          <div class="absolute inset-0 bg-white dark:bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+        <div
+          class="email-button group relative overflow-hidden sm:p-10 p-6 bg-black dark:bg-white dark:text-black font-extrabold mb-44 sm:text-3xl text-xl text-white text-center my-4 cursor-pointer transition-all duration-300"
+        >
+          <div
+            class="absolute inset-0 bg-white dark:bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+          >
+          </div>
           <div class="relative z-10 flex items-center justify-center space-x-3">
-            <span class="transition-all duration-200 group-hover:tracking-wide">Shoot me an email!</span>
-            <div class="email-icon transform transition-all duration-300 ease-out group-hover:scale-125 group-hover:-translate-y-1">
+            <span class="transition-all duration-200 group-hover:tracking-wide"
+              >Shoot me an email!</span
+            >
+            <div
+              class="email-icon transform transition-all duration-300 ease-out group-hover:scale-125 group-hover:-translate-y-1"
+            >
               📨
             </div>
           </div>
@@ -79,10 +100,16 @@ import Mirrow from "../components/Mirrow.astro";
     <div class="md:pb-8 pb-2 w-full">
       <div class="rounded-2xl w-full bg-[#dddddd] font-extrabold flex p-6">
         <div class="flex my-auto w-full space-x-6">
-          <a href="https://github.com/Era37" target="_blank" class="transition-transform duration-200 hover:scale-110"
+          <a
+            href="https://github.com/Era37"
+            target="_blank"
+            class="transition-transform duration-200 hover:scale-110"
             ><img src="/GitHub.svg" class="h-10" /></a
           >
-          <a href="https://bsky.app/profile/osa-is.online" target="_blank" class="transition-transform duration-200 hover:scale-110"
+          <a
+            href="https://bsky.app/profile/osa-is.online"
+            target="_blank"
+            class="transition-transform duration-200 hover:scale-110"
             ><img src="/Bluesky.svg" class="h-10" /></a
           >
           <img src="/Signature.png" class="h-12 ml-auto" />
@@ -109,8 +136,13 @@ import Mirrow from "../components/Mirrow.astro";
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0) scale(1.25); }
-    50% { transform: translateY(-8px) scale(1.25); }
+    0%,
+    100% {
+      transform: translateY(0) scale(1.25);
+    }
+    50% {
+      transform: translateY(-8px) scale(1.25);
+    }
   }
 
   .email-button:hover .email-icon {
