@@ -1,0 +1,181 @@
+---
+const navigationTabs = ["Home", "About", "Projects", "Contact"];
+
+const classes = {
+  backdrop: "fixed h-32 z-10 top-0 left-0 right-0 bg-gradient-to-b from-white/20 via-white/10 to-transparent dark:from-black/20 dark:via-black/10 dark:to-transparent backdrop-blur-[2px]",
+  
+  header: "bg-black dark:bg-white p-4 flex z-30 text-white dark:text-black w-[calc(100%-2rem)] sm:w-[75vw] md:w-[55vw] lg:w-[45vw] rounded-2xl left-1/2 -translate-x-1/2 space-x-6 sm:my-box fixed items-center",
+  
+  themeToggle: "z-10 relative cursor-pointer pr-8",
+  themeSliderTrack: "h-8 w-8 rounded-full bg-white dark:bg-black top-1/2 absolute -translate-y-1/2",
+  themeSliderButton: "h-8 w-8 rounded-full dark:bg-white bg-black top-1/2 absolute -translate-y-4 transition-transform duration-300",
+  
+  desktopNav: "hidden sm:flex space-x-4 md:space-x-8 m-auto pr-4 font-bold z-40 relative text-md sm:text-xl audiowide",
+  navLink: "transition-all hover:-translate-y-0.5 hover:text-gray-300 dark:hover:text-gray-600 cursor-pointer duration-300",
+  
+  mobileToggleContainer: "sm:hidden flex flex-1 justify-end",
+  mobileToggleButton: "z-40 relative p-2 focus:outline-none",
+  hamburgerContainer: "w-6 h-6 flex flex-col justify-center items-center",
+  hamburgerLine: "w-6 h-0.5 bg-white dark:bg-black transition-all duration-300",
+  
+  mobileDropdown: "sm:hidden fixed top-20 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-sm bg-black dark:bg-white rounded-xl z-20 my-box transition-all duration-300 ease-out overflow-hidden",
+  mobileNavContainer: "flex flex-col space-y-3 font-bold text-white dark:text-black audiowide",
+  mobileNavLink: "transition-all hover:text-gray-300 dark:hover:text-gray-600 cursor-pointer duration-300 text-center py-3 rounded-lg hover:bg-gray-900/10 dark:hover:bg-gray-100/10",
+};
+---
+
+<div class="mt-10 absolute">
+  <div class={classes.backdrop}></div>
+  
+  <header class={classes.header}>
+    <!-- Theme Toggle -->
+    <div id="theme-toggle" class={classes.themeToggle}>
+      <div class={classes.themeSliderTrack}></div>
+      <div id="theme-slider" class={`${classes.themeSliderButton} translate-x-2`}></div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class={classes.desktopNav}>
+      {navigationTabs.map((tab) => (
+        <a class={classes.navLink} href={`#${tab.toLowerCase()}`}>
+          {tab}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <div class={classes.mobileToggleContainer}>
+      <button id="mobile-toggle" class={classes.mobileToggleButton} aria-label="Toggle mobile menu">
+        <div class={classes.hamburgerContainer}>
+          <div id="line-1" class={`${classes.hamburgerLine} mb-1.5`}></div>
+          <div id="line-2" class={`${classes.hamburgerLine} mb-1.5`}></div>
+          <div id="line-3" class={classes.hamburgerLine}></div>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Dropdown -->
+  <nav id="mobile-dropdown" class={`${classes.mobileDropdown} opacity-0 -translate-y-4 max-h-0 pointer-events-none`}>
+    <div class="p-4">
+      <div class={classes.mobileNavContainer}>
+        {navigationTabs.map((tab) => (
+          <a class={`${classes.mobileNavLink} mobile-nav-link`} href={`#${tab.toLowerCase()}`}>
+            {tab}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .my-box {
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);
+  }
+</style>
+
+<script>
+  const ELEMENTS = {
+    themeSlider: () => document.getElementById('theme-slider'),
+    mobileDropdown: () => document.getElementById('mobile-dropdown'),
+    hamburgerLines: () => ['line-1', 'line-2', 'line-3'].map(id => document.getElementById(id)),
+  };
+
+  const CLASSES = {
+    hamburger: {
+      base: 'w-6 h-0.5 bg-white dark:bg-black transition-all duration-300',
+      closed: ['mb-1.5', 'mb-1.5', ''],
+      open: ['rotate-45 translate-y-1', 'opacity-0', '-rotate-45 -translate-y-1'],
+    },
+    dropdown: {
+      base: 'sm:hidden fixed top-20 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-sm bg-black dark:bg-white rounded-xl z-20 my-box transition-all duration-300 ease-out overflow-hidden',
+      closed: 'opacity-0 -translate-y-4 max-h-0 pointer-events-none',
+      open: 'opacity-100 translate-y-0 max-h-96',
+    }
+  };
+
+  let state = {
+    isDarkMode: false,
+    isMobileMenuOpen: false,
+  };
+
+  function updateElement(element, className) {
+    if (element) element.className = className;
+  }
+
+  function buildClassName(base, modifier) {
+    return `${base} ${modifier}`;
+  }
+
+  function initializeTheme() {
+    const theme = localStorage.theme === "light" ? "light" : "dark";
+    state.isDarkMode = theme === "dark";
+    
+    document.body.classList.remove("dark", "light", "pre-theme");
+    document.body.classList.add(theme);
+    
+    updateThemeSlider();
+  }
+
+  function updateThemeSlider() {
+    const slider = ELEMENTS.themeSlider();
+    const position = state.isDarkMode ? 'translate-x-8' : 'translate-x-2';
+    updateElement(slider, `h-8 w-8 rounded-full dark:bg-white bg-black top-1/2 absolute -translate-y-4 transition-transform duration-300 ${position}`);
+  }
+
+  function toggleTheme() {
+    state.isDarkMode = !state.isDarkMode;
+    const theme = state.isDarkMode ? "dark" : "light";
+    
+    localStorage.theme = theme;
+    document.body.classList.remove("dark", "light");
+    document.body.classList.add(theme);
+    
+    updateThemeSlider();
+  }
+
+  function updateHamburgerMenu() {
+    const lines = ELEMENTS.hamburgerLines();
+    const animations = state.isMobileMenuOpen ? CLASSES.hamburger.open : CLASSES.hamburger.closed;
+    
+    lines.forEach((line, index) => {
+      if (line) {
+        updateElement(line, buildClassName(CLASSES.hamburger.base, animations[index]));
+      }
+    });
+  }
+
+  function updateMobileDropdown() {
+    const dropdown = ELEMENTS.mobileDropdown();
+    const modifier = state.isMobileMenuOpen ? CLASSES.dropdown.open : CLASSES.dropdown.closed;
+    updateElement(dropdown, buildClassName(CLASSES.dropdown.base, modifier));
+  }
+
+  function toggleMobileMenu() {
+    state.isMobileMenuOpen = !state.isMobileMenuOpen;
+    updateHamburgerMenu();
+    updateMobileDropdown();
+  }
+
+  function closeMobileMenu() {
+    if (state.isMobileMenuOpen) {
+      state.isMobileMenuOpen = false;
+      updateHamburgerMenu();
+      updateMobileDropdown();
+    }
+  }
+
+  function bindEvents() {
+    document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+    document.getElementById('mobile-toggle')?.addEventListener('click', toggleMobileMenu);
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeTheme();
+    bindEvents();
+  });
+</script>

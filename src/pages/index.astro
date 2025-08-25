@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
+import Header from "../components/Header.astro";
 import Project from "../components/Project.astro";
 import Xiana from "../components/Xiana.astro";
 import LanguageN from "../components/Language-n.astro";
@@ -8,7 +8,7 @@ import LanguageN from "../components/Language-n.astro";
 
 <Layout>
   <div class="md:px-6 px-4 flex flex-col">
-    <Header client:load /><div
+    <Header /><div
       class="2xl:text-2xl lg:text-xl md:w-[70vw] lg:mt-40 mt-24 m-auto flex flex-col font-medium"
     >
       <img src="/mac.png" alt="" class="w-24 md:w-fit md:h-24" />

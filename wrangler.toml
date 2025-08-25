@@ -1,0 +1,7 @@
+name = "osa-is-online"
+compatibility_date = "2025-05-29"
+
+[env.production]
+name = "osa-is-online"
+
+pages_build_output_dir = "dist"
