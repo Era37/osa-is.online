@@ -1,22 +1,28 @@
 {
-  "name": "osa-is-online",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev --host --port 8080",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "npx astro build && wrangler deploy"
-  },
-  "dependencies": {
-    "@astrojs/cloudflare": "^12.6.5",
-    "@fontsource/inter": "^5.2.6",
-    "@tailwindcss/vite": "^4.1.12",
-    "astro": "^5.13.3"
-  },
-  "devDependencies": {
-    "tailwindcss": "^4.1.12",
-    "wrangler": "^4.32.0"
-  }
+	"name": "osa-is.online",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^6.1.0",
+		"@sveltejs/kit": "^2.37.0",
+		"@sveltejs/vite-plugin-svelte": "^6.1.4",
+		"@tailwindcss/vite": "^4.1.13",
+		"svelte": "^5.38.7",
+		"svelte-check": "^4.3.1",
+		"tailwindcss": "^4.1.13",
+		"typescript": "^5.9.2",
+		"vite": "^7.1.4"
+	},
+	"dependencies": {
+		"@fontsource/lato": "^5.2.6"
+	}
 }
