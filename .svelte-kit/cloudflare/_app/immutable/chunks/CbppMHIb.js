@@ -1,1 +1,0 @@
-async function n(e,o){const t=await o(`/blogs/${e}.md`);if(t.ok)return t.text()}const s=[];function a(e=3){return s.sort((o,t)=>t.date.getTime()-o.date.getTime()).slice(0,e)}export{n as a,s as b,a as g};
