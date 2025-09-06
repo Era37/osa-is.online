@@ -14,12 +14,12 @@
     },
     {
       name: "Mastodon",
-      href: "https://mastodon.social/@osa",
+      href: "https://mastodon.social/@osa_mannella",
       icon: Mastodon,
     },
     {
       name: "Github",
-      href: "https://github.com/osa",
+      href: "https://github.com/osa-mannella",
       icon: Github,
     },
   ];
