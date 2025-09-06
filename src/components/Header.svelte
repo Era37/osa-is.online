@@ -1,8 +1,6 @@
 <script>
-  import Sun from "./svgs/Sun.svelte";
-  import Moon from "./svgs/Moon.svelte";
+  import MoonSun from "./svgs/MoonSun.svelte";
   import Name from "./Name.svelte";
-  import { onMount } from "svelte";
 
   const pages = [
     {
@@ -31,7 +29,7 @@
       {/each}
     </div>
     <div class="ml-auto">
-      <Moon />
+      <MoonSun />
     </div>
   </div>
 </div>

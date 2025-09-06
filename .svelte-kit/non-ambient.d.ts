@@ -27,15 +27,18 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/";
+		RouteId(): "/" | "/about" | "/blog" | "/blog/[slug]";
 		RouteParams(): {
-			
+			"/blog/[slug]": { slug: string }
 		};
 		LayoutParams(): {
-			"/": Record<string, never>
+			"/": { slug?: string };
+			"/about": Record<string, never>;
+			"/blog": { slug?: string };
+			"/blog/[slug]": { slug: string }
 		};
-		Pathname(): "/";
+		Pathname(): "/" | "/about" | "/about/" | "/blog" | "/blog/" | `/blog/${string}` & {} | `/blog/${string}/` & {};
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/favicon.svg" | "/robots.txt" | string & {};
+		Asset(): "/LICENSE" | "/blogs/building-responsive-designs.md" | "/blogs/getting-started-with-svelte.md" | "/blogs/typescript-tips-tricks.md" | "/favicon.svg" | "/images/me.jpeg" | "/robots.txt" | string & {};
 	}
 }
