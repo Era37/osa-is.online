@@ -72,6 +72,7 @@
             {@const Icon = link.icon}
             <a
               href={link.href}
+              target="_blank"
               class="fill-[#505050] hover:fill-white transition-all duration-300 hover:-translate-y-1"
             >
               <Icon />
