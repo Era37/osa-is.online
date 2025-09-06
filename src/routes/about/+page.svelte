@@ -9,7 +9,7 @@
   const links = [
     {
       name: "Bluesky",
-      href: "https://bsky.app/profile/osa.is.online",
+      href: "https://bsky.app/profile/osa-is.online",
       icon: Bluesky,
     },
     {
