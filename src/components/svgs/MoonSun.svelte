@@ -3,10 +3,6 @@
 
   let isSun = $state(false);
 
-  function toggle() {
-    isSun = !isSun;
-  }
-
   let isDarkMode = $state(true);
   let loaded = $state(false);
   onMount(() => {
@@ -31,18 +27,11 @@
     updateBodyClass();
   }
 
-  function handleKeydown(event: KeyboardEvent) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      toggle();
-    }
-  }
-
   const cx = 110;
   const cy = 110;
-  const radius = 90; // adjust this value to move dots in/out
+  const radius = 90;
   const dots = Array.from({ length: 8 }, (_, i) => {
-    const angle = i * 45 * (Math.PI / 180); // convert to radians
+    const angle = i * 45 * (Math.PI / 180);
     return {
       x: cx + radius * Math.cos(angle),
       y: cy + radius * Math.sin(angle),
@@ -56,13 +45,9 @@
     width="35"
     height="35"
     onclick={toggleDarkMode}
-    onkeydown={handleKeydown}
     style="transform: rotate(40deg)"
     class="cursor-pointer"
     class:sun={isSun}
-    role="button"
-    tabindex="0"
-    aria-pressed={isSun}
   >
     <defs>
       <mask id="global-mask">

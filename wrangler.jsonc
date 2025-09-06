@@ -1,0 +1,12 @@
+{
+  "name": "osa-is-online",
+  "main": "./.svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-08-26",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".svelte-kit/cloudflare"
+  },
+  "build": {
+    "command": "npm run build"
+  }
+}
