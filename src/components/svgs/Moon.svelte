@@ -37,15 +37,26 @@
       toggle();
     }
   }
+
+  const cx = 110;
+  const cy = 110;
+  const radius = 90; // adjust this value to move dots in/out
+  const dots = Array.from({ length: 8 }, (_, i) => {
+    const angle = i * 45 * (Math.PI / 180); // convert to radians
+    return {
+      x: cx + radius * Math.cos(angle),
+      y: cy + radius * Math.sin(angle),
+    };
+  });
 </script>
 
 <div>
   <svg
     viewBox="0 0 230 230"
-    width="25"
-    height="25"
-    on:click={toggleDarkMode}
-    on:keydown={handleKeydown}
+    width="35"
+    height="35"
+    onclick={toggleDarkMode}
+    onkeydown={handleKeydown}
     style="transform: rotate(40deg)"
     class="cursor-pointer"
     class:sun={isSun}
@@ -59,7 +70,7 @@
         <circle
           cx="110"
           cy="110"
-          r="80"
+          r="60"
           fill="white"
           stroke-width="13"
           stroke="white"
@@ -67,12 +78,12 @@
       </mask>
       <mask id="moon-mask">
         <rect width="200" height="200" fill="white" />
-        <circle r="80" cx="110" cy="25" fill="black" class="float" />
+        <circle r="60" cx="110" cy="45" fill="black" class="float" />
       </mask>
       <mask id="moon-path-mask">
         <rect width="200" height="200" fill="black" />
         <circle
-          r="80"
+          r="60"
           cx="110"
           cy="110"
           stroke-width="13"
@@ -83,20 +94,15 @@
     </defs>
     <g mask="url(#global-mask)">
       <g class="blips">
-        <circle class="dot" cx="210" cy="110" r="12" />
-        <circle class="dot" cx="181" cy="181" r="12" />
-        <circle class="dot" cx="110" cy="210" r="12" />
-        <circle class="dot" cx="39" cy="181" r="12" />
-        <circle class="dot" cx="10" cy="110" r="12" />
-        <circle class="dot" cx="39" cy="39" r="12" />
-        <circle class="dot" cx="110" cy="10" r="12" />
-        <circle class="dot" cx="181" cy="39" r="12" />
+        {#each dots as { x, y }, i}
+          <circle class="dot" cx={x} cy={y} r="12" />
+        {/each}
       </g>
 
       <circle
         cx="110"
         cy="110"
-        r="80"
+        r="60"
         stroke-width="13"
         fill="none"
         stroke="black"
@@ -104,9 +110,9 @@
         class="ring"
       />
       <circle
-        r="80"
+        r="60"
         cx="110"
-        cy="25"
+        cy="45"
         stroke="black"
         stroke-width="15"
         fill="none"
