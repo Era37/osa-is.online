@@ -17,7 +17,7 @@
   <svg fill="none" height="28" width="145" viewBox="0 0 145 28">
     <text
       x="0"
-      y="21.4"
+      y="19"
       text-anchor="start"
       dominant-baseline="middle"
       font-size="24"
