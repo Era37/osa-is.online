@@ -3,7 +3,7 @@
   viewBox="0 0 30 30"
   role="img"
   aria-label="GitHub"
-  class="size-5 sm:size-7"
+  class="size-7"
 >
   <title>GitHub</title>
   <path

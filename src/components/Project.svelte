@@ -22,7 +22,7 @@
   );
 </script>
 
-<div class="mt-12">
+<div class="mt-4 md:mt-12">
   <a {href} class="block group">
     <h3 class="text-xl font-bold group-hover:text-rose-300 transition-colors">
       {projectName}

@@ -3,7 +3,7 @@
   viewBox="0 -10 80 90"
   role="img"
   aria-label="Mastodon"
-  class="size-4 sm:size-6"
+  class="size-6"
 >
   <title>Mastodon</title>
   <path

@@ -25,15 +25,17 @@
   ];
 </script>
 
-<div class="mt-16">
+<div class="md:mt-16 mt-4">
   <div class="mb-4">
     <Title>ABOUT</Title>
-    <div class="flex items-center gap-10 mt-14">
+    <div
+      class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-10 mt-10 md:mt-14"
+    >
       <div class="max-w-xl">
-        <h1 class="text-6xl font-black mb-14">
+        <h1 class="text-4xl md:text-6xl font-black mb-8 md:mb-14">
           Hi, I'm Osa. I'm a software engineer.
         </h1>
-        <div class="text-2xl space-y-6">
+        <div class="text-lg md:text-2xl space-y-6">
           <p>
             I'm a software engineer and student passionate about building
             meaningful digital experiences. I love exploring new technologies
@@ -53,17 +55,19 @@
           </p>
         </div>
       </div>
-      <div class="mb-auto flex flex-col">
+      <div class="mb-auto flex flex-col w-full md:w-auto">
         <img
           src="/images/me.jpeg"
           alt={meAlt}
-          class="rounded-xl max-w-72 mb-auto"
+          class="rounded-xl max-w-72 mb-auto self-center md:self-auto"
         />
-        <Squiggly />
-        <p class="text-sm italic text-gray-500">
+        <span class="self-center md:self-auto">
+          <Squiggly />
+        </span>
+        <p class="text-sm italic text-gray-500 self-center md:self-auto">
           {meAlt}
         </p>
-        <div class="flex ml-auto gap-2.5 my-4">
+        <div class="flex md:ml-auto gap-2.5 my-4 justify-center md:justify-end">
           {#each links as link}
             {@const Icon = link.icon}
             <a

@@ -3,7 +3,7 @@
   viewBox="0 -4 48 48"
   role="img"
   aria-label="Bluesky"
-  class="size-5 sm:size-6"
+  class="size-6"
 >
   <title>Bluesky</title>
   <path

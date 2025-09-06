@@ -1,4 +1,4 @@
-<footer class="mt-20 py-8 border-t border-gray-200 dark:border-[#383838]">
+<footer class="mt-auto py-8 border-t border-gray-200 dark:border-[#383838]">
   <div class="text-center">
     <p class="text-sm text-gray-500 dark:text-gray-400">
       © 2025 Osa Mannella. All rights reserved.

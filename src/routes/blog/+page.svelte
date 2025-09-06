@@ -9,8 +9,10 @@
   <div class="mb-4">
     <Title>BLOG</Title>
     <div class="max-w-4xl">
-      <h1 class="text-4xl font-black mt-14">My Thoughts & Projects</h1>
-      <p class="text-2xl mt-6 mb-16">
+      <h1 class="text-3xl md:text-4xl font-black mt-10 md:mt-14">
+        My Thoughts & Projects
+      </h1>
+      <p class="text-lg md:text-2xl mt-4 md:mt-6 mb-12 md:mb-16">
         A collection of articles about software development, technology, and the
         things I'm learning along the way.
       </p>
@@ -48,5 +50,4 @@
       {/if}
     </div>
   </div>
-  <Footer />
 </div>

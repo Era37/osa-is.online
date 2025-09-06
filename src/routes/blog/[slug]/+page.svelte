@@ -26,7 +26,7 @@
     <Title>BLOG</Title>
     <div class="max-w-4xl">
       <!-- Blog post content -->
-      <article class="prose prose-lg max-w-none">
+      <article class="prose prose-base md:prose-lg max-w-none">
         {@html marked.parse(blog.content ?? "")}
       </article>
 

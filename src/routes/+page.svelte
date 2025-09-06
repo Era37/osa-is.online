@@ -8,13 +8,13 @@
   const recentBlogs = getRecentBlogs(5);
 </script>
 
-<div class="font-lato">
+<div class="font-lato flex flex-col h-fit">
   <div
-    class="flex flex-col md:flex-row md:grid md:grid-cols-[65%_35%] gap-4 my-16"
+    class="flex flex-col md:flex-row space-y-10 md:space-y-0 md:grid md:grid-cols-[65%_35%] gap-6 md:gap-8 my-10 md:my-16"
   >
     <div>
       <Title>MY ARTICLES</Title>
-      <div class="space-y-10">
+      <div class="space-y-6 md:space-y-10">
         {#if recentBlogs.length > 0}
           {#each recentBlogs as blog}
             <Article {blog} />
@@ -34,5 +34,4 @@
       />
     </div>
   </div>
-  <Footer />
 </div>
