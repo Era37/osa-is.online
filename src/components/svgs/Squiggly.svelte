@@ -24,7 +24,7 @@
       T 770 50
     "
     fill="none"
-    class="stroke-amber-400"
+    class="dark:stroke-amber-400 stroke-yellow-700"
     stroke-width="3"
     stroke-linecap="round"
     stroke-dasharray="10 10"
