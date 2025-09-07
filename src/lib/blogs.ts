@@ -1,3 +1,5 @@
+import { redirect } from "@sveltejs/kit";
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -8,16 +10,10 @@ export interface BlogPost {
   tags: string[];
 }
 
-export async function getBlog(
-  slug: string,
-  fetchSvelte: typeof globalThis.fetch
-): Promise<string | undefined> {
-  const response = await fetchSvelte(`/blogs/${slug}.md`);
-  if (!response.ok) {
-    return undefined;
-  }
-  return response.text();
-}
+export const posts = import.meta.glob("./blogs/*.md", {
+  query: "?raw",
+  import: "default",
+});
 
 export const blogs: BlogPost[] = [
   {

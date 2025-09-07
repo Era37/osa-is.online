@@ -1,6 +1,5 @@
 <script lang="ts">
   import Title from "../../../components/Title.svelte";
-  import Footer from "../../../components/Footer.svelte";
   import { marked } from "marked";
   import type { PageProps } from "./$types";
   import hljs from "highlight.js";

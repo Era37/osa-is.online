@@ -1,12 +1,12 @@
 import type { PageLoad, PageLoadEvent } from "./$types";
-import { blogs, getBlog } from "$lib/blogs";
+import { blogs, posts } from "$lib/blogs";
 
-export const load: PageLoad = async ({ params, fetch }: PageLoadEvent) => {
+export const load: PageLoad = async ({ params }: PageLoadEvent) => {
   const blog = blogs.find((blog) => blog.slug === params.slug);
   return {
     blog: {
       ...blog,
-      content: await getBlog(params.slug, fetch),
+      content: await posts[`./blogs/${params.slug}.md`](),
     },
   };
 };
