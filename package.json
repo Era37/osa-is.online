@@ -12,7 +12,6 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
-    "@cloudflare/workerd-linux-64": "^1.20250906.0",
     "@sveltejs/adapter-cloudflare": "^7.2.3",
     "@sveltejs/adapter-auto": "^6.1.0",
     "@sveltejs/kit": "^2.37.1",
