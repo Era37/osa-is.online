@@ -27,16 +27,16 @@
     <div>
       <Title>MY PROJECTS</Title>
       <Project
-        href="https://use-n.com"
-        projectName="nlang"
-        description="A modern, open-source programming language designed for simplicity and ease of use."
-        date={new Date(2025, 7, 6)}
-      />
-      <Project
         href="https://mirrow.app"
         projectName="mirrow"
         description="Mirrow is a developer-first DSL that makes writing SVGs as easy and expressive as styling with CSS."
         date={new Date(2025, 8, 9)}
+      />
+      <Project
+        href="https://use-n.com"
+        projectName="nlang"
+        description="A modern, open-source programming language designed for simplicity and ease of use."
+        date={new Date(2025, 7, 6)}
       />
     </div>
   </div>
