@@ -4,6 +4,7 @@
   import Bluesky from "../../components/svgs/Bluesky.svelte";
   import Github from "../../components/svgs/Github.svelte";
   import Mastodon from "../../components/svgs/Mastodon.svelte";
+  import X from "../../components/svgs/xLogo.svelte";
   const meAlt = "Myself taking a mirror selfie adjacent to my boyfriend";
 
   const links = [
@@ -21,6 +22,11 @@
       name: "Github",
       href: "https://github.com/osa-mannella",
       icon: Github,
+    },
+    {
+      name: "X",
+      href: "https://x.com/osa_mannella",
+      icon: X,
     },
   ];
 </script>
