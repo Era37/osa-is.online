@@ -1,38 +1,53 @@
-# sv
+# osa-is.online
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Personal site built with [Astro](https://astro.build/) and Svelte components, styled with Tailwind CSS and deployed to Cloudflare Workers.
 
-## Creating a project
+## Development
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install dependencies and start the dev server:
 
 ```sh
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
 ## Building
 
-To create a production version of your app:
+Create a production build (outputs `dist/` with the Cloudflare worker bundle):
 
 ```sh
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Preview the production build locally:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+npm run preview
+```
+
+## Deployment
+
+The project targets Cloudflare Workers using the adapter in `astro.config.mjs`. Running `npm run build` generates `dist/_worker.js` plus static assets in `dist/client`. Deploy with `wrangler publish` as configured in `wrangler.jsonc`.
+
+## API
+
+The site exposes a JSON feed of Markdown posts at `/api/blog`. Each entry contains the frontmatter plus rendered HTML so the frontend can consume posts without direct file access.
+
+### Blog posts
+
+Add Markdown entries under `src/content/blog/` with frontmatter like:
+
+```md
+---
+title: Example Post
+description: Short teaser
+date: 2025-01-01
+tags: [astro, workers]
+readTime: 3 min read
+---
+
+Your content...
+```
+
+These files are bundled with the Cloudflare Worker so the API can serve them at runtime.
+

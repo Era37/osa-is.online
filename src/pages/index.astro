@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Article from "../components/Article.svelte";
+import Project from "../components/Project.svelte";
+import Title from "../components/Title.svelte";
+import { getRecentBlogs } from "../lib/blogs";
+
+const recentBlogs = getRecentBlogs(5);
+---
+
+<Layout title="Osa">
+  <div class="font-lato flex flex-col h-fit">
+    <div
+      class="flex flex-col md:flex-row space-y-10 md:space-y-0 md:grid md:grid-cols-[65%_35%] gap-6 md:gap-8 my-10 md:my-16"
+    >
+      <div>
+        <Title>MY ARTICLES</Title>
+        <div class="space-y-6 md:space-y-10">
+          {
+            recentBlogs.length > 0 ? (
+              recentBlogs.map((blog) => <Article blog={blog} />)
+            ) : (
+              <div class="text-gray-500 italic">No articles found.</div>
+            )
+          }
+        </div>
+      </div>
+      <div>
+        <Title>MY PROJECTS</Title>
+        <Project
+          href="https://mirrow.app"
+          projectName="mirrow"
+          description="A modern DSL for writing SVGs in a declarative way."
+          date={new Date(2025, 6, 6)}
+        />
+      </div>
+    </div>
+  </div>
+</Layout>

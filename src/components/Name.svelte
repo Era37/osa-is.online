@@ -1,5 +1,5 @@
 <script>
-  import { colors } from "$lib/index";
+  import { colors } from "../lib/index";
   import { onMount } from "svelte";
 
   let dashedVisible = false;
@@ -17,9 +17,8 @@
   <svg fill="none" height="28" width="145" viewBox="0 0 145 28">
     <text
       x="0"
-      y="19"
+      y="23"
       text-anchor="start"
-      dominant-baseline="middle"
       font-size="24"
       font-family="Lato"
       class:dashed-visible={dashedVisible}

@@ -4,32 +4,24 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite dev --host",
-    "build": "vite build",
-    "preview": "vite preview",
-    "prepare": "svelte-kit sync || echo ''",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
-  },
-  "devDependencies": {
-    "@cloudflare/workerd-linux-64": "^1.20250906.0",
-    "@sveltejs/adapter-cloudflare": "^7.2.3",
-    "@sveltejs/adapter-auto": "^6.1.0",
-    "@sveltejs/kit": "^2.37.1",
-    "@sveltejs/vite-plugin-svelte": "^6.1.4",
-    "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.1.13",
-    "svelte": "^5.38.7",
-    "svelte-check": "^4.3.1",
-    "tailwindcss": "^4.1.13",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.4"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
   },
   "dependencies": {
-    "@fontsource/lato": "^5.2.6",
+    "@astrojs/cloudflare": "^12.6.8",
+    "@astrojs/svelte": "^7.1.1",
+    "@fontsource/lato": "^5.2.7",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.1.13",
     "@types/marked": "^6.0.0",
+    "astro": "^5.13.8",
     "highlight.js": "^11.11.1",
     "marked": "^16.2.1",
-    "marked-highlight": "^2.2.2"
+    "marked-highlight": "^2.2.2",
+    "svelte": "^5.39.2",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
   }
 }
