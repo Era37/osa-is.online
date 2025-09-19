@@ -1,0 +1,374 @@
+
+--- 2025-09-19T06:54:35.953Z debug
+🪵  Writing logs to "/Users/osa/Documents/GitHub/osa-is.online/.home/Library/Preferences/.wrangler/logs/wrangler-2025-09-19_06-54-35_875.log"
+---
+
+--- 2025-09-19T06:54:35.953Z debug
+Metrics dispatcher: Posting data {"deviceId":"914f92de-20b0-4b3a-8c90-a8af1e272cc1","event":"wrangler command started","timestamp":1758264875953,"properties":{"amplitude_session_id":1758264875952,"amplitude_event_id":0,"wranglerVersion":"4.33.2","osPlatform":"Mac OS","osVersion":"Darwin Kernel Version 25.0.0: Mon Aug 25 21:17:51 PDT 2025; root:xnu-12377.1.9~3/RELEASE_ARM64_T6000","nodeVersion":24,"packageManager":"npm","isFirstUsage":false,"configFileType":"jsonc","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":true,"argsUsed":[],"argsCombination":"","command":"wrangler dev","args":{"latest":true,"noBundle":false,"remote":false,"r":false,"testScheduled":false,"xVectorizeBindToProd":false,"xImagesLocalMode":false}}}
+---
+
+--- 2025-09-19T06:54:35.958Z debug
+.env file not found at "/Users/osa/Documents/GitHub/osa-is.online/.env". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2025-09-19T06:54:35.958Z debug
+.env file not found at "/Users/osa/Documents/GitHub/osa-is.online/.env.local". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2025-09-19T06:54:35.986Z debug
+Metrics dispatcher: Failed to send request: fetch failed
+---
+
+--- 2025-09-19T06:54:35.986Z log
+
+ ⛅️ wrangler 4.33.2 (update available 4.38.0)
+─────────────────────────────────────────────
+---
+
+--- 2025-09-19T06:54:35.990Z log
+[custom build] Running: npm run build
+---
+
+--- 2025-09-19T06:54:36.086Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:36.087Z log
+[custom build] > osa-is.online@0.0.1 build
+---
+
+--- 2025-09-19T06:54:36.087Z log
+[custom build] > astro build
+---
+
+--- 2025-09-19T06:54:36.087Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:36.087Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.419Z log
+[custom build] 02:54:37 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+---
+
+--- 2025-09-19T06:54:37.419Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.419Z log
+[custom build] 02:54:37 [@astrojs/cloudflare] If you see the error "Invalid binding `SESSION`" in your build output, you need to add the binding to your wrangler config file.
+---
+
+--- 2025-09-19T06:54:37.419Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.450Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.451Z log
+[custom build] Auto-generating collections for folders in "src/content/" that are not defined as collections.
+---
+
+--- 2025-09-19T06:54:37.451Z log
+[custom build] This is deprecated, so you should define these collections yourself in "src/content.config.ts".
+---
+
+--- 2025-09-19T06:54:37.451Z log
+[custom build] The following collections have been auto-generated: blog
+---
+
+--- 2025-09-19T06:54:37.451Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.451Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.452Z log
+[custom build] 02:54:37 [content] Syncing content
+---
+
+--- 2025-09-19T06:54:37.452Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.459Z log
+[custom build] 02:54:37 [content] Synced content
+---
+
+--- 2025-09-19T06:54:37.459Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 02:54:37 [types] Generated 31ms
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 02:54:37 [build] output: "static"
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 02:54:37 [build] mode: "server"
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 02:54:37 [build] directory: /Users/osa/Documents/GitHub/osa-is.online/dist/
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 02:54:37 [build] adapter: @astrojs/cloudflare
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 02:54:37 [build] Collecting build info...
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 02:54:37 [build] ✓ Completed in 42ms.
+---
+
+--- 2025-09-19T06:54:37.460Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:37.464Z log
+[custom build] 02:54:37 [build] Building server entrypoints...
+---
+
+--- 2025-09-19T06:54:37.464Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.051Z log
+[custom build] 02:54:39 [vite] ✓ built in 1.56s
+---
+
+--- 2025-09-19T06:54:39.054Z log
+[custom build] 02:54:39 [build] ✓ Completed in 1.59s.
+---
+
+--- 2025-09-19T06:54:39.054Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.054Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.054Z log
+[custom build]  building client (vite) 
+---
+
+--- 2025-09-19T06:54:39.054Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.064Z log
+[custom build] 02:54:39 [vite] transforming...
+---
+
+--- 2025-09-19T06:54:39.064Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.237Z log
+[custom build] 02:54:39 [vite] ✓ 106 modules transformed.
+---
+
+--- 2025-09-19T06:54:39.237Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.257Z log
+[custom build] 02:54:39 [vite] rendering chunks...
+---
+
+--- 2025-09-19T06:54:39.257Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.266Z log
+[custom build] 02:54:39 [vite] computing gzip size...
+---
+
+--- 2025-09-19T06:54:39.266Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.268Z log
+[custom build] 02:54:39 [vite] dist/_astro/about.Dv8HYanR.css          1.30 kB │ gzip: 0.45 kB
+---
+
+--- 2025-09-19T06:54:39.268Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.268Z log
+[custom build] 02:54:39 [vite] dist/_astro/client.svelte.B4Q_Ps5w.js   1.13 kB │ gzip: 0.63 kB
+---
+
+--- 2025-09-19T06:54:39.268Z log
+[custom build] 02:54:39 [vite] dist/_astro/Header.CRlGGUmP.js         11.70 kB │ gzip: 5.40 kB
+---
+
+--- 2025-09-19T06:54:39.268Z log
+[custom build] 02:54:39 [vite] dist/_astro/render.DlSkyHR_.js         24.48 kB │ gzip: 9.69 kB
+---
+
+--- 2025-09-19T06:54:39.268Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.268Z log
+[custom build] 02:54:39 [vite] ✓ built in 208ms
+---
+
+--- 2025-09-19T06:54:39.268Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.278Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.278Z log
+[custom build]  prerendering static routes 
+---
+
+--- 2025-09-19T06:54:39.278Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.280Z log
+[custom build] 02:54:39 ▶ src/pages/about.astro
+---
+
+--- 2025-09-19T06:54:39.280Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.280Z log
+[custom build] 02:54:39   └─ /about/index.html
+---
+
+--- 2025-09-19T06:54:39.290Z log
+[custom build]  (+10ms) 
+---
+
+--- 2025-09-19T06:54:39.290Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.330Z log
+[custom build] 02:54:39 λ src/pages/api/blog/index.ts
+---
+
+--- 2025-09-19T06:54:39.330Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.330Z log
+[custom build] 02:54:39   └─ /api/blog
+---
+
+--- 2025-09-19T06:54:39.346Z log
+[custom build]  (+16ms) 
+---
+
+--- 2025-09-19T06:54:39.346Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.347Z log
+[custom build] 02:54:39 ▶ src/pages/blog/index.astro
+---
+
+--- 2025-09-19T06:54:39.347Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.347Z log
+[custom build] 02:54:39   └─ /blog/index.html
+---
+
+--- 2025-09-19T06:54:39.349Z log
+[custom build]  (+2ms) 
+---
+
+--- 2025-09-19T06:54:39.349Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.351Z log
+[custom build] 02:54:39 ▶ src/pages/index.astro
+---
+
+--- 2025-09-19T06:54:39.351Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.352Z log
+[custom build] 02:54:39   └─ /index.html
+---
+
+--- 2025-09-19T06:54:39.357Z log
+[custom build]  (+6ms) 
+---
+
+--- 2025-09-19T06:54:39.357Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.357Z log
+[custom build] 02:54:39 ✓ Completed in 86ms.
+---
+
+--- 2025-09-19T06:54:39.357Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.357Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.358Z log
+[custom build] 02:54:39 [build] Rearranging server assets...
+---
+
+--- 2025-09-19T06:54:39.358Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.361Z log
+[custom build] 02:54:39 [build] Server built in 1.94s
+---
+
+--- 2025-09-19T06:54:39.361Z log
+[custom build] 02:54:39 [build] Complete!
+---
+
+--- 2025-09-19T06:54:39.361Z log
+[custom build] 
+---
+
+--- 2025-09-19T06:54:39.419Z debug
+local dev variables file not found at ".dev.vars". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---

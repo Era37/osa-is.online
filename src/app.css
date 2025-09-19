@@ -24,7 +24,7 @@
 
 /* src/app.css (or whatever file Tailwind processes) */
 .prose {
-  color: inherit;
+  color: #ddd;
 }
 .prose :where(h1) {
   @apply text-3xl font-bold mt-8 mb-4 dark:text-white text-black;
@@ -37,9 +37,14 @@
 }
 .prose :where(p) {
   @apply mb-4 leading-relaxed;
+  line-height: 1.7;
 }
 .prose :where(code) {
-  @apply bg-gray-100 dark:bg-[#181818] px-2 py-1 rounded text-sm;
+  @apply bg-gray-100 dark:bg-[#181818] px-2 py-1 rounded text-sm text-rose-400;
+}
+.prose code::before,
+.prose code::after {
+  content: none !important;
 }
 .prose :where(pre) {
   @apply bg-gray-100 dark:bg-[#181818] p-4 rounded-lg overflow-x-auto;
