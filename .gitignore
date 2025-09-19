@@ -3,6 +3,9 @@ dist/
 
 # generated types
 .astro/
+.home
+.vscode
+.wrangler
 
 # dependencies
 node_modules/
