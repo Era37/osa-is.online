@@ -1,53 +1,46 @@
-# osa-is.online
-
-Personal site built with [Astro](https://astro.build/) and Svelte components, styled with Tailwind CSS and deployed to Cloudflare Workers.
-
-## Development
-
-Install dependencies and start the dev server:
+# Astro Starter Kit: Basics
 
 ```sh
-npm install
-npm run dev
+npm create astro@latest -- --template basics
 ```
 
-## Building
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-Create a production build (outputs `dist/` with the Cloudflare worker bundle):
+## 🚀 Project Structure
 
-```sh
-npm run build
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
 ```
 
-Preview the production build locally:
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-```sh
-npm run preview
-```
+## 🧞 Commands
 
-## Deployment
+All commands are run from the root of the project, from a terminal:
 
-The project targets Cloudflare Workers using the adapter in `astro.config.mjs`. Running `npm run build` generates `dist/_worker.js` plus static assets in `dist/client`. Deploy with `wrangler publish` as configured in `wrangler.jsonc`.
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## API
+## 👀 Want to learn more?
 
-The site exposes a JSON feed of Markdown posts at `/api/blog`. Each entry contains the frontmatter plus rendered HTML so the frontend can consume posts without direct file access.
-
-### Blog posts
-
-Add Markdown entries under `src/content/blog/` with frontmatter like:
-
-```md
----
-title: Example Post
-description: Short teaser
-date: 2025-01-01
-tags: [astro, workers]
-readTime: 3 min read
----
-
-Your content...
-```
-
-These files are bundled with the Cloudflare Worker so the API can serve them at runtime.
-
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

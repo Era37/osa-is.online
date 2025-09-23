@@ -1,7 +1,0 @@
-name = "osa-is-online"
-main = "./dist/_worker.js"
-compatibility_date = "2025-08-26"
-
-[assets]
-binding = "ASSETS"
-directory = "./dist"

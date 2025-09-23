@@ -1,27 +1,16 @@
 {
-  "name": "osa-is.online",
-  "private": true,
-  "version": "0.0.1",
+  "name": "",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.8",
-    "@astrojs/svelte": "^7.1.1",
-    "@fontsource/lato": "^5.2.7",
-    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.13",
-    "@types/marked": "^6.0.0",
-    "astro": "^5.13.8",
-    "highlight.js": "^11.11.1",
-    "marked": "^16.2.1",
-    "marked-highlight": "^2.2.2",
-    "svelte": "^5.39.2",
-    "tailwindcss": "^4.1.13",
-    "typescript": "^5.9.2"
+    "astro": "^5.13.10",
+    "tailwindcss": "^4.1.13"
   }
 }
