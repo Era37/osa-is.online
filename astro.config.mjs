@@ -1,22 +1,11 @@
-import { defineConfig } from "astro/config";
+// @ts-check
+import { defineConfig } from 'astro/config';
 
-import cloudflare from "@astrojs/cloudflare";
+import tailwindcss from '@tailwindcss/vite';
 
-import tailwindcss from "@tailwindcss/vite";
-
-import svelte from "@astrojs/svelte";
-
+// https://astro.build/config
 export default defineConfig({
-  adapter: cloudflare({
-    imageService: "passthrough"
-  }),
-
   vite: {
-    plugins: [tailwindcss()],
-    ssr: {
-      noExternal: ["highlight.js", "marked", "marked-highlight"]
-    }
-  },
-
-  integrations: [svelte()]
+    plugins: [tailwindcss()]
+  }
 });

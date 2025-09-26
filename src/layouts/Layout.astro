@@ -1,65 +1,25 @@
 ---
-import Header from "../components/Header.svelte";
-import Footer from "../components/Footer.svelte";
-import "../app.css";
-
-interface Props {
-  title?: string;
-  description?: string;
-}
-
-const { title = "Osa", description }: Props = Astro.props;
+import "../styles/global.css";
 ---
 
-<html lang="en" class="light">
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {description && <meta name="description" content={description} />}
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <script is:inline>
-      (function () {
-        const storedTheme = localStorage.getItem("isDarkMode");
-        let isDarkMode;
-
-        if (storedTheme !== null) {
-          isDarkMode = storedTheme === "true";
-        } else {
-          isDarkMode = window.matchMedia(
-            "(prefers-color-scheme: dark)"
-          ).matches;
-          localStorage.setItem("isDarkMode", isDarkMode.toString());
-        }
-
-        if (isDarkMode) {
-          document.documentElement.classList.remove("light");
-          document.documentElement.classList.add("dark");
-        }
-      })();
-    </script>
-    <title>{title}</title>
-    <slot name="head" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Osa Mannella</title>
   </head>
-  <body class="dark:bg-[#090909] dark:text-white text-[#090909]">
-    <div class="flex flex-col min-h-screen">
-      <div class="w-full max-w-4xl mx-auto px-4 md:px-6 flex-1 flex flex-col">
-        <Header client:load />
-        <main class="flex-1 flex flex-col">
-          <slot />
-        </main>
-        <Footer />
-      </div>
-    </div>
+  <body class="dark:bg-black dark:text-white">
+    <slot />
   </body>
 </html>
 
-<style is:global>
-  :root {
-    --font-lato: "Lato", sans-serif;
-  }
-
+<style>
+  html,
   body {
-    font-family: var(--font-lato);
-    transition: background-color 0.3s ease;
+    margin: 0;
+    width: 100%;
+    height: 100%;
   }
 </style>
